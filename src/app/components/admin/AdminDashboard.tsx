@@ -4,13 +4,15 @@ import { toast } from 'sonner';
 import { Toaster } from '../ui/sonner';
 import projectsDataImport from '@/data/projects.json';
 import socialImpactDataImport from '@/data/social-impact.json';
-import { projectsApi, socialImpactApi } from '@/lib/api';
+import settingsDataImport from '@/data/settings.json';
+import { projectsApi, socialImpactApi, settingsApi } from '@/lib/api';
 
-// Admin Dashboard untuk manage Projects & Social Impact
+// Admin Dashboard untuk manage Projects, Social Impact & Settings
 export function AdminDashboard({ onLogout }: { onLogout: () => void }) {
-  const [activeTab, setActiveTab] = useState<'projects' | 'social-impact'>('projects');
+  const [activeTab, setActiveTab] = useState<'projects' | 'social-impact' | 'settings'>('projects');
   const [projects, setProjects] = useState<any[]>([]);
   const [socialImpact, setSocialImpact] = useState<any[]>([]);
+  const [settings, setSettings] = useState<any>(null);
   const [editingItem, setEditingItem] = useState<any>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -26,9 +28,10 @@ export function AdminDashboard({ onLogout }: { onLogout: () => void }) {
       setLoading(true);
       
       // Load from MongoDB API
-      const [projectsResponse, impactResponse] = await Promise.all([
+      const [projectsResponse, impactResponse, settingsResponse] = await Promise.all([
         projectsApi.getAll(),
-        socialImpactApi.getAll()
+        socialImpactApi.getAll(),
+        settingsApi.get()
       ]);
       
       if (projectsResponse.success && projectsResponse.data) {
@@ -56,14 +59,30 @@ export function AdminDashboard({ onLogout }: { onLogout: () => void }) {
           setSocialImpact(socialImpactDataImport.stories || []);
         }
       }
+      
+      if (settingsResponse.success && settingsResponse.data) {
+        setSettings(settingsResponse.data);
+        console.log('📦 Loaded settings from MongoDB:', settingsResponse.data);
+      } else {
+        // Fallback to localStorage or defaults
+        const storedSettings = localStorage.getItem('portfolio_settings');
+        if (storedSettings) {
+          setSettings(JSON.parse(storedSettings));
+        } else {
+          setSettings(settingsDataImport);
+        }
+      }
     } catch (error) {
       console.error('Error loading data:', error);
       // Fallback to localStorage
       try {
         const storedProjects = localStorage.getItem('portfolio_projects');
         const storedImpact = localStorage.getItem('portfolio_social_impact');
+        const storedSettings = localStorage.getItem('portfolio_settings');
         if (storedProjects) setProjects(JSON.parse(storedProjects));
         if (storedImpact) setSocialImpact(JSON.parse(storedImpact));
+        if (storedSettings) setSettings(JSON.parse(storedSettings));
+        else setSettings(settingsDataImport);
       } catch (e) {
         console.error('Fallback error:', e);
       }
@@ -402,32 +421,51 @@ export function AdminDashboard({ onLogout }: { onLogout: () => void }) {
           >
             ❤️ Social Impact ({socialImpact.length})
           </button>
+          <button
+            onClick={() => setActiveTab('settings')}
+            style={{
+              padding: '12px 24px',
+              background: activeTab === 'settings' ? 'rgba(0,207,253,0.15)' : 'transparent',
+              border: 'none',
+              borderBottom: activeTab === 'settings' ? '2px solid #00CFFD' : '2px solid transparent',
+              color: activeTab === 'settings' ? '#00CFFD' : 'rgba(255,255,255,0.5)',
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: '14px',
+              fontWeight: '700',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+            }}
+          >
+            ⚙️ Profile Settings
+          </button>
         </div>
 
-        {/* Add Button */}
-        <button
-          onClick={handleAdd}
-          disabled={saving || loading}
-          style={{
-            marginBottom: '20px',
-            padding: '12px 24px',
-            borderRadius: '10px',
-            background: (saving || loading) ? 'rgba(0,207,253,0.3)' : 'linear-gradient(135deg, #00CFFD 0%, #0891B2 100%)',
-            border: 'none',
-            color: 'white',
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: '14px',
-            fontWeight: '700',
-            cursor: (saving || loading) ? 'not-allowed' : 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            opacity: (saving || loading) ? 0.5 : 1,
-          }}
-        >
-          {saving ? <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} /> : <Plus size={16} />}
-          Add New {activeTab === 'projects' ? 'Project' : 'Story'}
-        </button>
+        {/* Add Button (tidak untuk Settings) */}
+        {activeTab !== 'settings' && (
+          <button
+            onClick={handleAdd}
+            disabled={saving || loading}
+            style={{
+              marginBottom: '20px',
+              padding: '12px 24px',
+              borderRadius: '10px',
+              background: (saving || loading) ? 'rgba(0,207,253,0.3)' : 'linear-gradient(135deg, #00CFFD 0%, #0891B2 100%)',
+              border: 'none',
+              color: 'white',
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: '14px',
+              fontWeight: '700',
+              cursor: (saving || loading) ? 'not-allowed' : 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              opacity: (saving || loading) ? 0.5 : 1,
+            }}
+          >
+            {saving ? <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} /> : <Plus size={16} />}
+            Add New {activeTab === 'projects' ? 'Project' : 'Story'}
+          </button>
+        )}
 
         {/* Loading State */}
         {loading ? (
@@ -440,6 +478,44 @@ export function AdminDashboard({ onLogout }: { onLogout: () => void }) {
             <Loader2 size={32} style={{ animation: 'spin 1s linear infinite', margin: '0 auto 16px' }} />
             <p style={{ margin: 0 }}>Loading from MongoDB...</p>
           </div>
+        ) : activeTab === 'settings' ? (
+          // Settings Form (langsung tanpa list, karena hanya 1 settings object)
+          <SettingsForm 
+            settings={settings} 
+            onSave={async (updatedSettings: any) => {
+              try {
+                setSaving(true);
+                const response = await settingsApi.update(updatedSettings);
+                
+                if (response.success) {
+                  setSettings(updatedSettings);
+                  localStorage.setItem('portfolio_settings', JSON.stringify(updatedSettings));
+                  window.dispatchEvent(new CustomEvent('portfolioSettingsUpdated'));
+                  console.log('✅ Settings saved to MongoDB!');
+                  toast.success('Settings saved successfully!', {
+                    description: 'Your profile settings have been updated'
+                  });
+                } else {
+                  // Fallback to localStorage
+                  setSettings(updatedSettings);
+                  localStorage.setItem('portfolio_settings', JSON.stringify(updatedSettings));
+                  window.dispatchEvent(new CustomEvent('portfolioSettingsUpdated'));
+                  console.log('⚠️ Saved to localStorage only (API unavailable)');
+                  toast.warning('Saved locally only', {
+                    description: 'API server may be offline. Changes are in localStorage.'
+                  });
+                }
+              } catch (error) {
+                console.error('Error saving settings:', error);
+                toast.error('Failed to save settings', {
+                  description: 'Check console for details'
+                });
+              } finally {
+                setSaving(false);
+              }
+            }}
+            saving={saving}
+          />
         ) : (activeTab === 'projects' ? projects : socialImpact).length === 0 ? (
           <div style={{
             padding: '60px 20px',
@@ -557,6 +633,507 @@ export function AdminDashboard({ onLogout }: { onLogout: () => void }) {
             fontFamily: "'Space Grotesk', sans-serif",
           }}
         />
+      </div>
+    </div>
+  );
+}
+
+// Settings Form Component
+function SettingsForm({ settings, onSave, saving }: any) {
+  const [formData, setFormData] = useState(settings || {});
+
+  const handleChange = (path: string, value: any) => {
+    const keys = path.split('.');
+    setFormData((prev: any) => {
+      const updated = { ...prev };
+      let current = updated;
+      for (let i = 0; i < keys.length - 1; i++) {
+        current[keys[i]] = { ...current[keys[i]] };
+        current = current[keys[i]];
+      }
+      current[keys[keys.length - 1]] = value;
+      return updated;
+    });
+  };
+
+  const handleSave = () => {
+    onSave(formData);
+  };
+
+  if (!formData || !formData.profile) {
+    return <div style={{ padding: '20px', color: 'rgba(255,255,255,0.5)' }}>Loading settings...</div>;
+  }
+
+  return (
+    <div style={{
+      background: 'rgba(255,255,255,0.03)',
+      border: '1px solid rgba(255,255,255,0.1)',
+      borderRadius: '12px',
+      padding: '30px',
+      maxWidth: '900px',
+    }}>
+      <div style={{ display: 'grid', gap: '24px' }}>
+        {/* Profile Section */}
+        <div>
+          <h3 style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: '20px',
+            fontWeight: '700',
+            color: '#00CFFD',
+            marginBottom: '16px',
+          }}>
+            👤 Profile Information
+          </h3>
+          <div style={{ display: 'grid', gap: '16px' }}>
+            <div>
+              <label style={{
+                display: 'block',
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: '13px',
+                fontWeight: '600',
+                color: 'rgba(255,255,255,0.7)',
+                marginBottom: '8px',
+              }}>
+                Full Name
+              </label>
+              <input
+                type="text"
+                value={formData.profile.name || ''}
+                onChange={(e) => handleChange('profile.name', e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'white',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '14px',
+                }}
+              />
+            </div>
+            <div>
+              <label style={{
+                display: 'block',
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: '13px',
+                fontWeight: '600',
+                color: 'rgba(255,255,255,0.7)',
+                marginBottom: '8px',
+              }}>
+                Title / Role
+              </label>
+              <input
+                type="text"
+                value={formData.profile.title || ''}
+                onChange={(e) => handleChange('profile.title', e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'white',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '14px',
+                }}
+              />
+            </div>
+            <div>
+              <label style={{
+                display: 'block',
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: '13px',
+                fontWeight: '600',
+                color: 'rgba(255,255,255,0.7)',
+                marginBottom: '8px',
+              }}>
+                Bio / Description
+              </label>
+              <textarea
+                value={formData.profile.bio || ''}
+                onChange={(e) => handleChange('profile.bio', e.target.value)}
+                rows={4}
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'white',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '14px',
+                  resize: 'vertical',
+                }}
+              />
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  color: 'rgba(255,255,255,0.7)',
+                  marginBottom: '8px',
+                }}>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  value={formData.profile.email || ''}
+                  onChange={(e) => handleChange('profile.email', e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    borderRadius: '8px',
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    color: 'white',
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontSize: '14px',
+                  }}
+                />
+              </div>
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  color: 'rgba(255,255,255,0.7)',
+                  marginBottom: '8px',
+                }}>
+                  Phone
+                </label>
+                <input
+                  type="text"
+                  value={formData.profile.phone || ''}
+                  onChange={(e) => handleChange('profile.phone', e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    borderRadius: '8px',
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    color: 'white',
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontSize: '14px',
+                  }}
+                />
+              </div>
+            </div>
+            <div>
+              <label style={{
+                display: 'block',
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: '13px',
+                fontWeight: '600',
+                color: 'rgba(255,255,255,0.7)',
+                marginBottom: '8px',
+              }}>
+                Location
+              </label>
+              <input
+                type="text"
+                value={formData.profile.location || ''}
+                onChange={(e) => handleChange('profile.location', e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'white',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '14px',
+                }}
+              />
+            </div>
+            <div>
+              <label style={{
+                display: 'block',
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: '13px',
+                fontWeight: '600',
+                color: 'rgba(255,255,255,0.7)',
+                marginBottom: '8px',
+              }}>
+                Resume URL
+              </label>
+              <input
+                type="text"
+                value={formData.profile.resumeUrl || ''}
+                onChange={(e) => handleChange('profile.resumeUrl', e.target.value)}
+                placeholder="https://..."
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'white',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '14px',
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Social Links Section */}
+        <div>
+          <h3 style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: '20px',
+            fontWeight: '700',
+            color: '#A855F7',
+            marginBottom: '16px',
+          }}>
+            🔗 Social Links
+          </h3>
+          <div style={{ display: 'grid', gap: '16px' }}>
+            <div>
+              <label style={{
+                display: 'block',
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: '13px',
+                fontWeight: '600',
+                color: 'rgba(255,255,255,0.7)',
+                marginBottom: '8px',
+              }}>
+                GitHub URL
+              </label>
+              <input
+                type="text"
+                value={formData.profile.social?.github || ''}
+                onChange={(e) => handleChange('profile.social.github', e.target.value)}
+                placeholder="https://github.com/username"
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'white',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '14px',
+                }}
+              />
+            </div>
+            <div>
+              <label style={{
+                display: 'block',
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: '13px',
+                fontWeight: '600',
+                color: 'rgba(255,255,255,0.7)',
+                marginBottom: '8px',
+              }}>
+                LinkedIn URL
+              </label>
+              <input
+                type="text"
+                value={formData.profile.social?.linkedin || ''}
+                onChange={(e) => handleChange('profile.social.linkedin', e.target.value)}
+                placeholder="https://linkedin.com/in/username"
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'white',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '14px',
+                }}
+              />
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  color: 'rgba(255,255,255,0.7)',
+                  marginBottom: '8px',
+                }}>
+                  Twitter URL (optional)
+                </label>
+                <input
+                  type="text"
+                  value={formData.profile.social?.twitter || ''}
+                  onChange={(e) => handleChange('profile.social.twitter', e.target.value)}
+                  placeholder="https://twitter.com/username"
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    borderRadius: '8px',
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    color: 'white',
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontSize: '14px',
+                  }}
+                />
+              </div>
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  color: 'rgba(255,255,255,0.7)',
+                  marginBottom: '8px',
+                }}>
+                  Instagram URL (optional)
+                </label>
+                <input
+                  type="text"
+                  value={formData.profile.social?.instagram || ''}
+                  onChange={(e) => handleChange('profile.social.instagram', e.target.value)}
+                  placeholder="https://instagram.com/username"
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    borderRadius: '8px',
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    color: 'white',
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontSize: '14px',
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div>
+          <h3 style={{
+            fontFamily: "'Syne', sans-serif",
+            fontSize: '20px',
+            fontWeight: '700',
+            color: '#EC4899',
+            marginBottom: '16px',
+          }}>
+            📊 Profile Stats
+          </h3>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+            <div>
+              <label style={{
+                display: 'block',
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: '13px',
+                fontWeight: '600',
+                color: 'rgba(255,255,255,0.7)',
+                marginBottom: '8px',
+              }}>
+                Experience
+              </label>
+              <input
+                type="text"
+                value={formData.profile.stats?.experience || ''}
+                onChange={(e) => handleChange('profile.stats.experience', e.target.value)}
+                placeholder="3+ Years"
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'white',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '14px',
+                }}
+              />
+            </div>
+            <div>
+              <label style={{
+                display: 'block',
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: '13px',
+                fontWeight: '600',
+                color: 'rgba(255,255,255,0.7)',
+                marginBottom: '8px',
+              }}>
+                Projects
+              </label>
+              <input
+                type="text"
+                value={formData.profile.stats?.projects || ''}
+                onChange={(e) => handleChange('profile.stats.projects', e.target.value)}
+                placeholder="15+ Projects"
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'white',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '14px',
+                }}
+              />
+            </div>
+            <div>
+              <label style={{
+                display: 'block',
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: '13px',
+                fontWeight: '600',
+                color: 'rgba(255,255,255,0.7)',
+                marginBottom: '8px',
+              }}>
+                Communities
+              </label>
+              <input
+                type="text"
+                value={formData.profile.stats?.communities || ''}
+                onChange={(e) => handleChange('profile.stats.communities', e.target.value)}
+                placeholder="5+ Communities"
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'white',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '14px',
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Save Button */}
+        <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+          <button
+            onClick={handleSave}
+            disabled={saving}
+            style={{
+              padding: '12px 32px',
+              borderRadius: '10px',
+              background: saving ? 'rgba(0,207,253,0.3)' : 'linear-gradient(135deg, #00CFFD 0%, #0891B2 100%)',
+              border: 'none',
+              color: 'white',
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: '14px',
+              fontWeight: '700',
+              cursor: saving ? 'not-allowed' : 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              opacity: saving ? 0.5 : 1,
+            }}
+          >
+            {saving ? <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} /> : <Save size={16} />}
+            {saving ? 'Saving...' : 'Save Settings'}
+          </button>
+        </div>
       </div>
     </div>
   );

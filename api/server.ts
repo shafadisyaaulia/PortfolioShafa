@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import projectsRouter from './projects';
 import socialImpactRouter from './social-impact';
+import settingsRouter from './settings';
 
 // Load environment variables
 dotenv.config({ path: '.env.local' });
@@ -29,6 +30,7 @@ app.get('/api/health', (req, res) => {
 // Routes
 app.use('/api/projects', projectsRouter);
 app.use('/api/social-impact', socialImpactRouter);
+app.use('/api/settings', settingsRouter);
 
 // Error handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

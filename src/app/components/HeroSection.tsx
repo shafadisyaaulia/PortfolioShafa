@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, MapPin, Star, Zap } from "lucide-react";
+import { settingsApi } from "@/lib/api";
+import settingsDataImport from "@/data/settings.json";
 
 // Ganti dengan foto Anda sendiri
 // Taruh foto di: public/images/shafa-portrait.jpg
@@ -74,7 +76,50 @@ function ParticleCanvas() {
 export function HeroSection() {
   const [visible, setVisible] = useState(false);
   const [roleIdx, setRoleIdx] = useState(0);
+  const [settings, setSettings] = useState<any>(null);
   const roles = ["AI Engineer", "Product Leader", "IBM AI Scholar", "Hackathon Finalist", "Community Facilitator"];
+
+  // Load settings from API
+  useEffect(() => {
+    const loadSettings = async () => {
+      try {
+        const response = await settingsApi.get();
+        if (response.success && response.data) {
+          setSettings(response.data);
+          console.log('📦 Loaded settings from MongoDB:', response.data);
+        } else {
+          // Fallback to localStorage or defaults
+          const storedSettings = localStorage.getItem('portfolio_settings');
+          if (storedSettings) {
+            setSettings(JSON.parse(storedSettings));
+          } else {
+            setSettings(settingsDataImport);
+          }
+        }
+      } catch (error) {
+        console.error('Error loading settings:', error);
+        // Fallback to localStorage or defaults
+        const storedSettings = localStorage.getItem('portfolio_settings');
+        if (storedSettings) {
+          setSettings(JSON.parse(storedSettings));
+        } else {
+          setSettings(settingsDataImport);
+        }
+      }
+    };
+
+    loadSettings();
+
+    // Listen for settings updates
+    const handleSettingsUpdate = () => {
+      loadSettings();
+    };
+    window.addEventListener('portfolioSettingsUpdated', handleSettingsUpdate);
+
+    return () => {
+      window.removeEventListener('portfolioSettingsUpdated', handleSettingsUpdate);
+    };
+  }, []);
 
   useEffect(() => {
     setTimeout(() => setVisible(true), 150);
@@ -85,19 +130,21 @@ export function HeroSection() {
   return (
     <section id="home" style={{
       minHeight: "100vh",
-      background: "#060614",
+      background: "var(--bg-primary)",
       position: "relative",
       overflow: "hidden",
       paddingTop: "80px",
       display: "flex",
       alignItems: "center",
+      transition: "background 0.3s ease",
     }}>
       {/* Grid pattern */}
       <div style={{
         position: "absolute", inset: 0,
-        backgroundImage: "linear-gradient(rgba(0,207,253,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,207,253,0.04) 1px, transparent 1px)",
+        backgroundImage: "linear-gradient(var(--border-color) 1px, transparent 1px), linear-gradient(90deg, var(--border-color) 1px, transparent 1px)",
         backgroundSize: "60px 60px",
         pointerEvents: "none", zIndex: 0,
+        opacity: 0.4,
       }} />
 
       {/* Glowing orbs */}
@@ -156,7 +203,7 @@ export function HeroSection() {
             }} />
             <span style={{
               fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: "12px", fontWeight: "600", color: "#00CFFD", letterSpacing: "1px",
+              fontSize: "12px", fontWeight: "600", color: "var(--accent-cyan)", letterSpacing: "1px",
             }}>AVAILABLE FOR OPPORTUNITIES</span>
           </div>
 
@@ -168,19 +215,38 @@ export function HeroSection() {
               fontWeight: "800",
               lineHeight: "0.92",
               letterSpacing: "-3px",
-              color: "white",
+              color: "var(--text-primary)",
               margin: 0,
             }}>
-              <span style={{ display: "block" }}>SHAFA</span>
-              <span style={{
-                display: "block",
-                background: "linear-gradient(135deg, #00CFFD 0%, #A855F7 60%, #EC4899 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                filter: "drop-shadow(0 0 30px rgba(0,207,253,0.4))",
-              }}>DISYA</span>
-              <span style={{ display: "block" }}>AULIA</span>
+              {settings?.profile?.name ? (
+                settings.profile.name.split(' ').map((word: string, idx: number) => (
+                  <span key={idx} style={{
+                    display: "block",
+                    ...(idx === 1 ? {
+                      background: "linear-gradient(135deg, #00CFFD 0%, #A855F7 60%, #EC4899 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      filter: "drop-shadow(0 0 30px rgba(0,207,253,0.4))",
+                    } : {})
+                  }}>
+                    {word.toUpperCase()}
+                  </span>
+                ))
+              ) : (
+                <>
+                  <span style={{ display: "block" }}>SHAFA</span>
+                  <span style={{
+                    display: "block",
+                    background: "linear-gradient(135deg, #00CFFD 0%, #A855F7 60%, #EC4899 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    filter: "drop-shadow(0 0 30px rgba(0,207,253,0.4))",
+                  }}>DISYA</span>
+                  <span style={{ display: "block" }}>AULIA</span>
+                </>
+              )}
             </h1>
           </div>
 
@@ -197,7 +263,7 @@ export function HeroSection() {
             }} />
             <span key={roleIdx} style={{
               fontSize: "18px", fontWeight: "600",
-              color: "rgba(255,255,255,0.85)",
+              color: "var(--text-secondary)",
               animation: "roleSlide 0.5s ease",
               letterSpacing: "0.5px",
             }}>{roles[roleIdx]}</span>
@@ -209,11 +275,15 @@ export function HeroSection() {
 
           <p style={{
             fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: "16px", color: "rgba(255,255,255,0.5)",
+            fontSize: "16px", color: "var(--text-muted)",
             lineHeight: "1.7", marginBottom: "36px", maxWidth: "460px",
           }}>
-            Bridging <span style={{ color: "#00CFFD", fontWeight: "600" }}>Artificial Intelligence</span> and{" "}
-            <span style={{ color: "#A855F7", fontWeight: "600" }}>Social Impact</span> — engineering technology that transforms communities and shapes a better future.
+            {settings?.profile?.bio || (
+              <>
+                Bridging <span style={{ color: "#00CFFD", fontWeight: "600" }}>Artificial Intelligence</span> and{" "}
+                <span style={{ color: "#A855F7", fontWeight: "600" }}>Social Impact</span> — engineering technology that transforms communities and shapes a better future.
+              </>
+            )}
           </p>
 
           {/* Meta */}
@@ -226,7 +296,7 @@ export function HeroSection() {
               { icon: <MapPin size={13} color="#00CFFD" />, text: "USK, Aceh, Indonesia" },
               { icon: <Zap size={13} color="#A855F7" />, text: "Informatics, 2024" },
             ].map((m, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", color: "rgba(255,255,255,0.45)", fontSize: "13px" }}>
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", color: "var(--text-muted)", fontSize: "13px" }}>
                 {m.icon}{m.text}
               </div>
             ))}
@@ -252,15 +322,15 @@ export function HeroSection() {
             <a href="#contact" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               padding: "14px 28px", borderRadius: "10px",
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              color: "rgba(255,255,255,0.85)",
+              background: "var(--card-bg)",
+              border: "1px solid var(--card-border)",
+              color: "var(--text-secondary)",
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "14px", fontWeight: "700", textDecoration: "none",
               transition: "all 0.3s ease",
             }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,207,253,0.4)"; (e.currentTarget as HTMLElement).style.color = "#00CFFD"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.12)"; (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.85)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLElement).style.color = "var(--text-secondary)"; }}
             >
               Contact Me
             </a>

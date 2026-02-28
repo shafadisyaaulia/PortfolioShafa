@@ -607,7 +607,7 @@ export function FeaturedProjects() {
         />
       )}
       <section id="projects" style={{
-      background: "#060614",
+      background: "var(--bg-primary)",
       padding: "100px 24px",
       position: "relative", overflow: "hidden",
     }}>
@@ -645,7 +645,7 @@ export function FeaturedProjects() {
             <h2 style={{
               fontFamily: "'Syne', sans-serif",
               fontSize: "clamp(32px, 5vw, 56px)", fontWeight: "800",
-              color: "white", letterSpacing: "-2px",
+              color: "var(--text-primary)", letterSpacing: "-2px",
             }}>
               Projects That
               <span style={{

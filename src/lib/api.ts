@@ -113,5 +113,20 @@ export const socialImpactApi = {
   },
 };
 
+// Settings API
+export const settingsApi = {
+  get: () => apiFetch('/settings'),
+  
+  update: (data: any) => {
+    return apiFetch('/settings', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+  },
+};
+
 // Health check
 export const healthCheck = () => apiFetch('/health');

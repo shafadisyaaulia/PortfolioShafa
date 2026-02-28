@@ -53,9 +53,9 @@ function AchievCard({ a, large }: { a: typeof ACHIEVEMENTS[0]; large?: boolean }
       style={{
         padding: "28px",
         borderRadius: "20px",
-        background: hovered ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.025)",
-        border: `1px solid ${hovered ? a.accent + "50" : "rgba(255,255,255,0.07)"}`,
-        boxShadow: hovered ? `0 0 40px ${a.glow}, inset 0 0 40px rgba(255,255,255,0.01)` : "none",
+        background: hovered ? "var(--card-bg-hover)" : "var(--card-bg)",
+        border: `1px solid ${hovered ? a.accent + "50" : "var(--card-border)"}`,
+        boxShadow: hovered ? `0 0 40px ${a.glow}, inset 0 0 40px var(--card-bg-subtle)` : "none",
         transition: "all 0.4s ease",
         transform: hovered ? "translateY(-6px)" : "none",
         position: "relative",
@@ -111,7 +111,7 @@ function AchievCard({ a, large }: { a: typeof ACHIEVEMENTS[0]; large?: boolean }
       <h3 style={{
         fontFamily: "'Syne', sans-serif",
         fontSize: large ? "24px" : "20px",
-        fontWeight: "800", color: "white",
+        fontWeight: "800", color: "var(--text-primary)",
         letterSpacing: "-0.5px", marginBottom: "4px", lineHeight: 1.2,
       }}>{a.title}</h3>
       <p style={{
@@ -120,17 +120,17 @@ function AchievCard({ a, large }: { a: typeof ACHIEVEMENTS[0]; large?: boolean }
       }}>{a.subtitle}</p>
       <p style={{
         fontFamily: "'Space Grotesk', sans-serif",
-        fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: "1.6", marginBottom: "20px",
+        fontSize: "14px", color: "var(--text-muted)", lineHeight: "1.6", marginBottom: "20px",
       }}>{a.desc}</p>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
         {a.tags.map(tag => (
           <span key={tag} style={{
             padding: "4px 10px", borderRadius: "6px",
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.08)",
+            background: "var(--card-bg-subtle)",
+            border: "1px solid var(--card-border)",
             fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: "11px", fontWeight: "600", color: "rgba(255,255,255,0.4)",
+            fontSize: "11px", fontWeight: "600", color: "var(--text-muted)",
             letterSpacing: "0.3px",
           }}>{tag}</span>
         ))}
@@ -162,7 +162,7 @@ function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
 export function AchievementsGrid() {
   return (
     <section id="achievements" style={{
-      background: "#07071A",
+      background: "var(--bg-primary)",
       padding: "100px 24px",
       position: "relative", overflow: "hidden",
     }}>
@@ -191,7 +191,7 @@ export function AchievementsGrid() {
           <h2 style={{
             fontFamily: "'Syne', sans-serif",
             fontSize: "clamp(32px, 5vw, 56px)", fontWeight: "800",
-            color: "white", letterSpacing: "-2px", lineHeight: 1.05, marginBottom: "16px",
+            color: "var(--text-primary)", letterSpacing: "-2px", lineHeight: 1.05, marginBottom: "16px",
           }}>
             Achievements That
             <br />
@@ -203,7 +203,7 @@ export function AchievementsGrid() {
           </h2>
           <p style={{
             fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: "15px", color: "rgba(255,255,255,0.4)", maxWidth: "480px", margin: "0 auto", lineHeight: "1.7",
+            fontSize: "15px", color: "var(--text-muted)", maxWidth: "480px", margin: "0 auto", lineHeight: "1.7",
           }}>A track record of national recognition across AI, innovation, and academic leadership.</p>
         </div>
 

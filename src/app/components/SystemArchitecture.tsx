@@ -52,7 +52,7 @@ export function SystemArchitecture() {
 
   return (
     <section id="architecture" style={{
-      background: "#07071A",
+      background: "var(--bg-primary)",
       padding: "100px 24px",
       position: "relative", overflow: "hidden",
     }}>
@@ -80,7 +80,7 @@ export function SystemArchitecture() {
           <h2 style={{
             fontFamily: "'Syne', sans-serif",
             fontSize: "clamp(32px, 5vw, 56px)", fontWeight: "800",
-            color: "white", letterSpacing: "-2px", lineHeight: 1.05,
+            color: "var(--text-primary)", letterSpacing: "-2px", lineHeight: 1.05,
           }}>
             Technical System
             <span style={{
@@ -91,7 +91,7 @@ export function SystemArchitecture() {
           </h2>
           <p style={{
             fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: "14px", color: "rgba(255,255,255,0.35)", marginTop: "16px", letterSpacing: "0.3px",
+            fontSize: "14px", color: "var(--text-muted)", marginTop: "16px", letterSpacing: "0.3px",
           }}>Hover layers to explore the full technical stack</p>
         </div>
 

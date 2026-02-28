@@ -86,7 +86,7 @@ export function TechStack() {
 
   return (
     <section id="tech" style={{
-      background: "#060614",
+      background: "var(--bg-primary)",
       padding: "100px 24px",
       position: "relative", overflow: "hidden",
     }}>
@@ -128,7 +128,7 @@ export function TechStack() {
           <h2 style={{
             fontFamily: "'Syne', sans-serif",
             fontSize: "clamp(32px, 5vw, 56px)", fontWeight: "800",
-            color: "white", letterSpacing: "-2px", lineHeight: 1.05, marginBottom: "8px",
+            color: "var(--text-primary)", letterSpacing: "-2px", lineHeight: 1.05, marginBottom: "8px",
           }}>
             Tools &{" "}
             <span style={{
@@ -184,7 +184,7 @@ export function TechStack() {
           display: "flex", alignItems: "center", justifyContent: "space-between",
           flexWrap: "wrap", gap: "20px",
         }}>
-          <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.3px" }}>
+          <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "14px", color: "var(--text-muted)", letterSpacing: "0.3px" }}>
             <span style={{ color: "#00CFFD", fontWeight: "700" }}>12+ technologies</span> mastered across the full stack, from UI design to AI/ML deployment.
           </div>
           <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>

@@ -1,11 +1,53 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mail, Linkedin, Download, Github, ArrowUp, Copy, CheckCircle } from "lucide-react";
+import { settingsApi } from "@/lib/api";
+import settingsDataImport from "@/data/settings.json";
 
 export function Footer() {
   const [copied, setCopied] = useState(false);
+  const [settings, setSettings] = useState<any>(null);
+
+  // Load settings
+  useEffect(() => {
+    const loadSettings = async () => {
+      try {
+        const response = await settingsApi.get();
+        if (response.success && response.data) {
+          setSettings(response.data);
+        } else {
+          const storedSettings = localStorage.getItem('portfolio_settings');
+          if (storedSettings) {
+            setSettings(JSON.parse(storedSettings));
+          } else {
+            setSettings(settingsDataImport);
+          }
+        }
+      } catch (error) {
+        const storedSettings = localStorage.getItem('portfolio_settings');
+        if (storedSettings) {
+          setSettings(JSON.parse(storedSettings));
+        } else {
+          setSettings(settingsDataImport);
+        }
+      }
+    };
+
+    loadSettings();
+
+    // Listen for settings updates
+    const handleSettingsUpdate = () => {
+      loadSettings();
+    };
+    window.addEventListener('portfolioSettingsUpdated', handleSettingsUpdate);
+
+    return () => {
+      window.removeEventListener('portfolioSettingsUpdated', handleSettingsUpdate);
+    };
+  }, []);
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("shafa.disya@gmail.com");
+    const email = settings?.profile?.email || "shafa.disya@gmail.com";
+    navigator.clipboard.writeText(email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -13,7 +55,7 @@ export function Footer() {
   return (
     <footer id="contact" style={{
       fontFamily: "'Space Grotesk', sans-serif",
-      background: "#060614",
+      background: "var(--bg-primary)",
       position: "relative", overflow: "hidden",
     }}>
       {/* Top glow line */}
@@ -60,7 +102,7 @@ export function Footer() {
           <h2 style={{
             fontFamily: "'Syne', sans-serif",
             fontSize: "clamp(40px, 7vw, 96px)",
-            fontWeight: "800", color: "white",
+            fontWeight: "800", color: "var(--text-primary)",
             letterSpacing: "-3px", lineHeight: "0.95",
             marginBottom: "28px",
           }}>
@@ -74,7 +116,7 @@ export function Footer() {
             <br />Meaningful</span>
           </h2>
           <p style={{
-            fontSize: "16px", color: "rgba(255,255,255,0.4)",
+            fontSize: "16px", color: "var(--text-muted)",
             maxWidth: "480px", margin: "0 auto 48px", lineHeight: "1.7",
           }}>
             Ready to collaborate on AI projects, product development, or social impact initiatives? Let's make it happen.
@@ -100,36 +142,36 @@ export function Footer() {
               {copied ? "Email Copied!" : "Contact Me"}
             </button>
 
-            <a href="https://linkedin.com/in/shafa-disya-aulia" target="_blank" rel="noopener noreferrer"
+            <a href={settings?.profile?.social?.linkedin || "https://linkedin.com/in/shafa-disya-aulia"} target="_blank" rel="noopener noreferrer"
               style={{
                 display: "flex", alignItems: "center", gap: "10px",
                 padding: "16px 32px", borderRadius: "12px",
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                color: "rgba(255,255,255,0.8)",
+                background: "var(--card-bg)",
+                border: "1px solid var(--card-border)",
+                color: "var(--text-secondary)",
                 fontSize: "15px", fontWeight: "700", textDecoration: "none",
                 fontFamily: "'Space Grotesk', sans-serif",
                 transition: "all 0.3s ease",
               }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#0A66C2"; (e.currentTarget as HTMLElement).style.background = "rgba(10,102,194,0.15)"; (e.currentTarget as HTMLElement).style.color = "#fff"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)"; (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)"; (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.8)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLElement).style.background = "var(--card-bg)"; (e.currentTarget as HTMLElement).style.color = "var(--text-secondary)"; }}
             >
               <Linkedin size={18} />LinkedIn
             </a>
 
-            <a href="/cv-shafa-disya-aulia.pdf" download
+            <a href={settings?.profile?.resumeUrl || "/cv-shafa-disya-aulia.pdf"} download
               style={{
                 display: "flex", alignItems: "center", gap: "10px",
                 padding: "16px 32px", borderRadius: "12px",
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                color: "rgba(255,255,255,0.6)",
+                background: "var(--card-bg-subtle)",
+                border: "1px solid var(--card-border)",
+                color: "var(--text-muted)",
                 fontSize: "15px", fontWeight: "700", textDecoration: "none",
                 fontFamily: "'Space Grotesk', sans-serif",
                 transition: "all 0.3s ease",
               }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(245,158,11,0.4)"; (e.currentTarget as HTMLElement).style.color = "#F59E0B"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.08)"; (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.6)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLElement).style.color = "var(--text-muted)"; }}
             >
               <Download size={18} />Download CV
             </a>
@@ -142,26 +184,44 @@ export function Footer() {
           marginBottom: "64px",
         }} className="contact-cards-grid">
           {[
-            { icon: <Mail size={18} color="#00CFFD" />, label: "EMAIL", val: "shafa.disya@gmail.com", color: "#00CFFD", action: copyEmail },
-            { icon: <Linkedin size={18} color="#0A66C2" />, label: "LINKEDIN", val: "linkedin.com/in/shafa", color: "#0A66C2", href: "https://linkedin.com/in/shafa-disya-aulia" },
-            { icon: <Github size={18} color="rgba(255,255,255,0.6)" />, label: "GITHUB", val: "github.com/shafa", color: "#fff", href: "https://github.com" },
+            { 
+              icon: <Mail size={18} color="#00CFFD" />, 
+              label: "EMAIL", 
+              val: settings?.profile?.email || "shafa.disya@gmail.com", 
+              color: "#00CFFD", 
+              action: copyEmail 
+            },
+            { 
+              icon: <Linkedin size={18} color="#0A66C2" />, 
+              label: "LINKEDIN", 
+              val: settings?.profile?.social?.linkedin?.replace('https://', '').replace('http://', '') || "linkedin.com/in/shafa", 
+              color: "#0A66C2", 
+              href: settings?.profile?.social?.linkedin || "https://linkedin.com/in/shafa-disya-aulia" 
+            },
+            { 
+              icon: <Github size={18} color="rgba(255,255,255,0.6)" />, 
+              label: "GITHUB", 
+              val: settings?.profile?.social?.github?.replace('https://', '').replace('http://', '') || "github.com/shafa", 
+              color: "#fff", 
+              href: settings?.profile?.social?.github || "https://github.com" 
+            },
           ].map((c, i) => {
             const el = (
               <div style={{
                 padding: "20px 24px",
                 borderRadius: "14px",
-                background: "rgba(255,255,255,0.025)",
-                border: "1px solid rgba(255,255,255,0.06)",
+                background: "var(--card-bg)",
+                border: "1px solid var(--card-border)",
                 display: "flex", alignItems: "center", gap: "14px",
                 cursor: "pointer", transition: "all 0.3s ease",
               }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = c.color + "40"; (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)"; (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.025)"; (e.currentTarget as HTMLElement).style.transform = "none"; }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = c.color + "40"; (e.currentTarget as HTMLElement).style.background = "var(--card-bg-hover)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLElement).style.background = "var(--card-bg)"; (e.currentTarget as HTMLElement).style.transform = "none"; }}
               >
                 {c.icon}
                 <div>
-                  <div style={{ fontSize: "10px", fontWeight: "700", color: "rgba(255,255,255,0.25)", letterSpacing: "1.5px", marginBottom: "2px" }}>{c.label}</div>
-                  <div style={{ fontSize: "13px", fontWeight: "600", color: "rgba(255,255,255,0.65)" }}>{c.val}</div>
+                  <div style={{ fontSize: "10px", fontWeight: "700", color: "var(--text-muted)", letterSpacing: "1.5px", marginBottom: "2px" }}>{c.label}</div>
+                  <div style={{ fontSize: "13px", fontWeight: "600", color: "var(--text-secondary)" }}>{c.val}</div>
                 </div>
               </div>
             );
@@ -174,7 +234,7 @@ export function Footer() {
         {/* Divider */}
         <div style={{
           height: "1px",
-          background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)",
+          background: "linear-gradient(90deg, transparent, var(--border-color), transparent)",
           marginBottom: "32px",
         }} />
 
@@ -191,10 +251,16 @@ export function Footer() {
               fontSize: "13px", fontWeight: "800", color: "#060614",
               fontFamily: "'Syne', sans-serif",
               boxShadow: "0 0 15px rgba(0,207,253,0.3)",
-            }}>SDA</div>
+            }}>
+              {settings?.profile?.name ? 
+                settings.profile.name.split(' ').map((w: string) => w[0]).join('').toUpperCase().slice(0,3) 
+                : 'SDA'}
+            </div>
             <div>
-              <div style={{ fontSize: "14px", fontWeight: "700", color: "rgba(255,255,255,0.8)" }}>Shafa Disya Aulia</div>
-              <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.3px" }}>© 2026 · All rights reserved</div>
+              <div style={{ fontSize: "14px", fontWeight: "700", color: "var(--text-secondary)" }}>
+                {settings?.profile?.name || "Shafa Disya Aulia"}
+              </div>
+              <div style={{ fontSize: "11px", color: "var(--text-muted)", letterSpacing: "0.3px" }}>© 2026 · All rights reserved</div>
             </div>
           </div>
 
@@ -203,11 +269,11 @@ export function Footer() {
               <a key={h} href={h}
                 style={{
                   textDecoration: "none", fontSize: "12px", fontWeight: "600",
-                  color: "rgba(255,255,255,0.25)", letterSpacing: "0.5px",
+                  color: "var(--text-muted)", letterSpacing: "0.5px",
                   transition: "color 0.2s ease",
                 }}
                 onMouseEnter={e => (e.currentTarget.style.color = "#00CFFD")}
-                onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.25)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "var(--text-muted)")}
               >
                 {["Home", "Awards", "Projects", "Impact", "Tech"][i]}
               </a>
@@ -228,7 +294,7 @@ export function Footer() {
           ><ArrowUp size={16} /></button>
         </div>
 
-        <p style={{ textAlign: "center", marginTop: "28px", fontSize: "11px", color: "rgba(255,255,255,0.15)", letterSpacing: "0.5px" }}>
+        <p style={{ textAlign: "center", marginTop: "28px", fontSize: "11px", color: "var(--text-muted)", letterSpacing: "0.5px", opacity: 0.5 }}>
           Engineered with precision · Driven by impact · Universitas Syiah Kuala · 2026
         </p>
       </div>
