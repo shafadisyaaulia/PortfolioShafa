@@ -1,0 +1,121 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "num": "01",
+      "name": "Level-Up",
+      "tagline": "AI-Powered Marketplace",
+      "desc": "Full-stack marketplace platform with an integrated Gemini AI assistant that helps users navigate listings, get personalized recommendations, and automate workflows in real-time.",
+      "fullDesc": "Level-Up is a comprehensive full-stack marketplace platform that revolutionizes online trading with AI integration. The platform features a powerful Gemini AI assistant that provides real-time support, personalized recommendations, and automated workflow management. Built with modern technologies including React for dynamic UI, Node.js for robust backend, and MongoDB for flexible data storage.",
+      "images": [
+        "/images/projects/level-up/1.jpg",
+        "/images/projects/level-up/2.jpg",
+        "/images/projects/level-up/3.jpg"
+      ],
+      "gallery": [
+        "/images/projects/level-up/1.jpg",
+        "/images/projects/level-up/2.jpg",
+        "/images/projects/level-up/3.jpg",
+        "/images/projects/level-up/4.jpg",
+        "/images/projects/level-up/5.jpg"
+      ],
+      "tags": ["React", "Node.js", "MongoDB", "Gemini AI"],
+      "accent": "#00CFFD",
+      "glow": "rgba(0,207,253,0.25)",
+      "status": "Live",
+      "metric": "Gemini AI Integrated",
+      "features": [
+        "AI-powered recommendation engine",
+        "Real-time chat with Gemini AI assistant",
+        "Advanced search and filtering",
+        "Secure payment integration",
+        "User dashboard and analytics"
+      ],
+      "techStack": [
+        { "name": "Frontend", "items": ["React", "TypeScript", "Tailwind CSS"] },
+        { "name": "Backend", "items": ["Node.js", "Express", "MongoDB"] },
+        { "name": "AI/ML", "items": ["Gemini AI API", "Natural Language Processing"] }
+      ],
+      "github": "",
+      "demo": ""
+    },
+    {
+      "id": 2,
+      "num": "02",
+      "name": "SabangKarsa",
+      "tagline": "Tourism Service Platform",
+      "desc": "Comprehensive tourism service platform for Sabang Island connecting travelers with local guides, accommodations, and authentic experiences. Funded by P2MW Kemendikbudristek.",
+      "fullDesc": "SabangKarsa is a comprehensive tourism service platform designed specifically for Sabang Island. The platform connects travelers with local guides, authentic accommodations, and unique experiences. Funded by P2MW Kemendikbudristek, this project aims to boost local tourism economy while preserving cultural authenticity. Features include interactive maps, booking systems, and multilingual support.",
+      "images": [
+        "/images/projects/sabangkarsa/1.jpg",
+        "/images/projects/sabangkarsa/2.jpg",
+        "/images/projects/sabangkarsa/3.jpg"
+      ],
+      "gallery": [
+        "/images/projects/sabangkarsa/1.jpg",
+        "/images/projects/sabangkarsa/2.jpg",
+        "/images/projects/sabangkarsa/3.jpg",
+        "/images/projects/sabangkarsa/4.jpg",
+        "/images/projects/sabangkarsa/5.jpg"
+      ],
+      "tags": ["Laravel", "MySQL", "Bootstrap", "Maps API"],
+      "accent": "#A855F7",
+      "glow": "rgba(168,85,247,0.25)",
+      "status": "P2MW Funded",
+      "metric": "Kemendikbudristek",
+      "features": [
+        "Interactive destination maps",
+        "Local guide booking system",
+        "Accommodation listings",
+        "Experience packages",
+        "Multilingual support (ID/EN)"
+      ],
+      "techStack": [
+        { "name": "Frontend", "items": ["Bootstrap", "JavaScript", "jQuery"] },
+        { "name": "Backend", "items": ["Laravel", "PHP", "MySQL"] },
+        { "name": "APIs", "items": ["Google Maps API", "Payment Gateway"] }
+      ],
+      "github": "",
+      "demo": ""
+    },
+    {
+      "id": 3,
+      "num": "03",
+      "name": "YOLO Fall Detection",
+      "tagline": "Human Fall Detection AI",
+      "desc": "Real-time human fall detection system using YOLO architecture achieving 92% accuracy on test datasets, designed for elderly care and safety monitoring environments.",
+      "fullDesc": "YOLO Fall Detection is an advanced AI-powered system designed to detect human falls in real-time using the YOLO (You Only Look Once) architecture. Achieving 92% accuracy on test datasets, this system is specifically designed for elderly care facilities and safety monitoring environments. The system can process video feeds in real-time and send instant alerts when a fall is detected, potentially saving lives through rapid response.",
+      "images": [
+        "/images/projects/yolo-fall-detection/1.jpg",
+        "/images/projects/yolo-fall-detection/2.jpg",
+        "/images/projects/yolo-fall-detection/3.jpg"
+      ],
+      "gallery": [
+        "/images/projects/yolo-fall-detection/1.jpg",
+        "/images/projects/yolo-fall-detection/2.jpg",
+        "/images/projects/yolo-fall-detection/3.jpg",
+        "/images/projects/yolo-fall-detection/4.jpg",
+        "/images/projects/yolo-fall-detection/5.jpg"
+      ],
+      "tags": ["Python", "YOLO", "TensorFlow", "OpenCV"],
+      "accent": "#EC4899",
+      "glow": "rgba(236,72,153,0.25)",
+      "status": "92% Accuracy",
+      "metric": "Real-time Detection",
+      "features": [
+        "Real-time video processing",
+        "92% detection accuracy",
+        "Instant alert system",
+        "Multiple camera support",
+        "Dashboard for monitoring"
+      ],
+      "techStack": [
+        { "name": "AI/ML", "items": ["YOLO v5", "TensorFlow", "PyTorch"] },
+        { "name": "Computer Vision", "items": ["OpenCV", "NumPy", "Pandas"] },
+        { "name": "Backend", "items": ["Python", "Flask", "WebSocket"] }
+      ],
+      "github": "",
+      "demo": ""
+    }
+  ]
+}

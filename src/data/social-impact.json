@@ -1,0 +1,96 @@
+{
+  "stories": [
+    {
+      "id": "pulo-aceh",
+      "num": "01",
+      "tag": "COMMUNITY FACILITATOR",
+      "icon": "Wifi",
+      "title": "Pulo Aceh",
+      "headline": "Bridging the Digital Divide",
+      "desc": "Led digital literacy programs for remote island communities in Pulo Aceh — introducing computing, internet navigation, and digital tools to residents who had never used smartphones or computers.",
+      "fullDesc": "As a Community Facilitator in Pulo Aceh, I led comprehensive digital literacy programs targeting remote island communities that had limited access to technology. The program focused on introducing basic computing skills, internet navigation, and essential digital tools to residents who had never used smartphones or computers before. Through hands-on workshops and patient training, we successfully bridged the digital divide, empowering over 200 residents across 5 villages to access online resources, communicate with loved ones, and explore digital entrepreneurship opportunities.",
+      "stats": [
+        { "val": "200+", "label": "Residents" },
+        { "val": "5", "label": "Villages" },
+        { "val": "3mo", "label": "Duration" }
+      ],
+      "highlights": [
+        "Basic computing & smartphone usage",
+        "Digital entrepreneurship workshops",
+        "Online health resource access"
+      ],
+      "images": [
+        "/images/social-impact/pulo-aceh/1.jpg",
+        "/images/social-impact/pulo-aceh/2.jpg",
+        "/images/social-impact/pulo-aceh/3.jpg"
+      ],
+      "gallery": [
+        "/images/social-impact/pulo-aceh/1.jpg",
+        "/images/social-impact/pulo-aceh/2.jpg",
+        "/images/social-impact/pulo-aceh/3.jpg",
+        "/images/social-impact/pulo-aceh/4.jpg",
+        "/images/social-impact/pulo-aceh/5.jpg"
+      ],
+      "achievements": [
+        "200+ residents trained in digital literacy",
+        "5 villages connected to digital resources",
+        "Ongoing community tech support established",
+        "Local digital entrepreneurs emerged"
+      ],
+      "impact": [
+        { "label": "Training Sessions", "value": "40+" },
+        { "label": "Success Rate", "value": "85%" },
+        { "label": "Follow-up Support", "value": "Ongoing" }
+      ],
+      "accent": "#00CFFD",
+      "glow": "rgba(0,207,253,0.3)",
+      "gradient": "linear-gradient(135deg, #00CFFD 0%, #0891B2 100%)"
+    },
+    {
+      "id": "bireuen",
+      "num": "02",
+      "tag": "MAHASISWA BERDAMPAK",
+      "icon": "Heart",
+      "title": "Bireuen",
+      "headline": "Post-Disaster Recovery",
+      "desc": "Recognized as Mahasiswa Berdampak Bireuen for leading tech-driven post-disaster recovery in Bireuen, Aceh — helping communities rebuild with digital tools and information systems.",
+      "fullDesc": "Following natural disasters in Bireuen, Aceh, I was recognized as Mahasiswa Berdampak (Impact Student) for leading technology-driven post-disaster recovery initiatives. The project involved developing and implementing digital information management systems to coordinate relief efforts, track resource distribution, and facilitate communication between relief organizations and affected communities. This work helped over 300 families and 10+ organizations coordinate more effectively during the critical recovery period, ultimately strengthening community resilience.",
+      "stats": [
+        { "val": "300+", "label": "Families" },
+        { "val": "10+", "label": "Orgs" },
+        { "val": "Award", "label": "2024" }
+      ],
+      "highlights": [
+        "Post-disaster info management",
+        "Relief coordination platform",
+        "Community resilience workshops"
+      ],
+      "images": [
+        "/images/social-impact/bireuen/1.jpg",
+        "/images/social-impact/bireuen/2.jpg",
+        "/images/social-impact/bireuen/3.jpg"
+      ],
+      "gallery": [
+        "/images/social-impact/bireuen/1.jpg",
+        "/images/social-impact/bireuen/2.jpg",
+        "/images/social-impact/bireuen/3.jpg",
+        "/images/social-impact/bireuen/4.jpg",
+        "/images/social-impact/bireuen/5.jpg"
+      ],
+      "achievements": [
+        "Mahasiswa Berdampak Award 2024",
+        "300+ families assisted in recovery",
+        "Cross-organization coordination platform",
+        "Community resilience framework established"
+      ],
+      "impact": [
+        { "label": "Response Time", "value": "-40%" },
+        { "label": "Coordination", "value": "10+ Orgs" },
+        { "label": "Recognition", "value": "National" }
+      ],
+      "accent": "#A855F7",
+      "glow": "rgba(168,85,247,0.3)",
+      "gradient": "linear-gradient(135deg, #A855F7 0%, #7C3AED 100%)"
+    }
+  ]
+}
