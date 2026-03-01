@@ -1,3 +1,4 @@
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import express from 'express';
 import cors from 'cors';
 import projectsRouter from './projects';
@@ -33,5 +34,7 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   res.status(500).json({ success: false, error: err.message });
 });
 
-// Export for Vercel serverless
-export default app;
+// Export handler for Vercel serverless
+export default (req: VercelRequest, res: VercelResponse) => {
+  return app(req as any, res as any);
+};
