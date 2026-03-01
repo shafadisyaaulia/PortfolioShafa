@@ -1,11 +1,7 @@
 import { MongoClient, Db } from 'mongodb';
-import dotenv from 'dotenv';
-
-// Load environment variables
-dotenv.config({ path: '.env.local' });
 
 if (!process.env.MONGODB_URI) {
-  throw new Error('⚠️ MONGODB_URI tidak ditemukan di .env.local');
+  throw new Error('⚠️ MONGODB_URI environment variable is required');
 }
 
 const uri = process.env.MONGODB_URI;
