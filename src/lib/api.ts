@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
 interface ApiResponse<T> {
   success: boolean;
@@ -12,6 +12,7 @@ async function apiFetch<T>(
   options?: RequestInit
 ): Promise<ApiResponse<T>> {
   try {
+    console.log(`🔍 API Request: ${API_URL}${endpoint}`);
     const response = await fetch(`${API_URL}${endpoint}`, {
       ...options,
       headers: {
@@ -22,9 +23,11 @@ async function apiFetch<T>(
     const data = await response.json();
 
     if (!response.ok) {
+      console.error(`❌ API Error Response:`, data);
       throw new Error(data.error || 'API request failed');
     }
 
+    console.log(`✅ API Success: ${endpoint}`, data);
     return data;
   } catch (error) {
     console.error(`API Error [${endpoint}]:`, error);
