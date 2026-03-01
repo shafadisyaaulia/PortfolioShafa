@@ -197,30 +197,6 @@ export function AdminLogin({ onLogin }: { onLogin: () => void }) {
             Login to Admin Panel
           </button>
         </form>
-
-        <div style={{
-          marginTop: '24px',
-          padding: '16px',
-          borderRadius: '12px',
-          background: 'rgba(0,207,253,0.05)',
-          border: '1px solid rgba(0,207,253,0.2)',
-        }}>
-          <p style={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: '12px',
-            color: 'rgba(0,207,253,0.8)',
-            margin: 0,
-            lineHeight: '1.6',
-          }}>
-            💡 <strong>Default password:</strong> admin123<br />
-            Change it in <code style={{
-              background: 'rgba(0,0,0,0.3)',
-              padding: '2px 6px',
-              borderRadius: '4px',
-              fontSize: '11px',
-            }}>AdminLogin.tsx</code>
-          </p>
-        </div>
       </div>
     </div>
   );
