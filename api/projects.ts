@@ -57,7 +57,7 @@ router.post('/', upload.array('images', 10), async (req, res) => {
 router.put('/:id', upload.array('images', 10), async (req, res) => {
   try {
     const db = await getDatabase();
-    const projectId = parseInt(req.params.id);
+    const projectId = parseInt(Array.isArray(req.params.id) ? req.params.id[0] : req.params.id);
     const projectData = JSON.parse(req.body.data);
 
     // Upload new images if provided
@@ -92,7 +92,7 @@ router.put('/:id', upload.array('images', 10), async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const db = await getDatabase();
-    const projectId = parseInt(req.params.id);
+    const projectId = parseInt(Array.isArray(req.params.id) ? req.params.id[0] : req.params.id);
 
     const result = await db.collection('projects').deleteOne({ id: projectId });
 
