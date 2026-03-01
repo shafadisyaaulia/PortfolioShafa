@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import projectsRouter from './projects';
-import socialImpactRouter from './social-impact';
-import settingsRouter from './settings';
+import projectsRouter from './projects.js';
+import socialImpactRouter from './social-impact.js';
+import settingsRouter from './settings.js';
 
 // Load environment variables
 dotenv.config({ path: '.env.local' });

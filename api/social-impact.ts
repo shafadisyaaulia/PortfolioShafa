@@ -1,7 +1,7 @@
 import express from 'express';
 import multer from 'multer';
-import { getDatabase } from './lib/mongodb';
-import { uploadImage } from './lib/cloudinary';
+import { getDatabase } from './lib/mongodb.js';
+import { uploadImage } from './lib/cloudinary.js';
 
 const router = express.Router();
 const upload = multer({ storage: multer.memoryStorage() });

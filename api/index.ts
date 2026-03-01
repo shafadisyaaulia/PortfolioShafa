@@ -1,9 +1,9 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import express, { Express } from 'express';
 import cors from 'cors';
-import projectsRouter from './projects';
-import socialImpactRouter from './social-impact';
-import settingsRouter from './settings';
+import projectsRouter from './projects.js';
+import socialImpactRouter from './social-impact.js';
+import settingsRouter from './settings.js';
 
 // Create Express app
 const app: Express = express();
