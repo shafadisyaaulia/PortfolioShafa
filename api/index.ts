@@ -1,16 +1,17 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import express from 'express';
+import express, { Express } from 'express';
 import cors from 'cors';
 import projectsRouter from './projects';
 import socialImpactRouter from './social-impact';
 import settingsRouter from './settings';
 
-const app = express();
+// Create Express app
+const app: Express = express();
 
 // Middleware
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Logging middleware
 app.use((req, res, next) => {
@@ -35,6 +36,14 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 });
 
 // Export handler for Vercel serverless
-export default (req: VercelRequest, res: VercelResponse) => {
-  return app(req as any, res as any);
+export default async (req: VercelRequest, res: VercelResponse) => {
+  // Vercel passes the request through Express
+  return new Promise((resolve, reject) => {
+    app(req as any, res as any, (result: any) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+      return resolve(result);
+    });
+  });
 };
