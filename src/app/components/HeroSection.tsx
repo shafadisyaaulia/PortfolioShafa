@@ -294,7 +294,7 @@ export function HeroSection() {
             {[
               { icon: <Star size={13} color="#F59E0B" />, text: "GPA 3.88 / 4.00" },
               { icon: <MapPin size={13} color="#00CFFD" />, text: "USK, Aceh, Indonesia" },
-              { icon: <Zap size={13} color="#A855F7" />, text: "Informatics, 2024" },
+              { icon: <Zap size={13} color="#A855F7" />, text: "Informatics, 2023" },
             ].map((m, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: "6px", color: "var(--text-muted)", fontSize: "13px" }}>
                 {m.icon}{m.text}
