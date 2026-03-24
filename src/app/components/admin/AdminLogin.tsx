@@ -7,7 +7,7 @@ export function AdminLogin({ onLogin }: { onLogin: () => void }) {
   const [error, setError] = useState('');
 
   // Default password - GANTI INI!
-  const ADMIN_PASSWORD = 'admin123'; // ⚠️ Change this!
+  const ADMIN_PASSWORD = 'Shafadisya24;'; // ⚠️ Change this!
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
