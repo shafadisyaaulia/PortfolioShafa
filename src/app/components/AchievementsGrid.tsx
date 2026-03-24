@@ -16,7 +16,7 @@ const ACHIEVEMENTS = [
     gallery: [
       "/Images%20Portofolio/Portofolio/Level%20Up/Cover.PNG",
       "/Images%20Portofolio/Portofolio/Level%20Up/website%20level-up.png",
-      "/Images%20Portofolio/Portofolio/Level%20Up/IMG_2217.PNG"
+      "/Images%20Portofolio/Portofolio/Level%20Up/IMG_2219.PNG"
     ],
   },
   {
