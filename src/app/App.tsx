@@ -10,6 +10,7 @@ import { TechStack } from "./components/TechStack";
 import { SystemArchitecture } from "./components/SystemArchitecture";
 import { Footer } from "./components/Footer";
 import { FloatingAdminButton } from "./components/FloatingAdminButton";
+import { FloatingMusicToggle } from "./components/FloatingMusicToggle";
 import AdminPage from "./admin/page";
 
 // Homepage Component
@@ -84,6 +85,7 @@ function HomePage() {
       </main>
       <Footer />
       <FloatingAdminButton />
+      <FloatingMusicToggle />
     </div>
   );
 }
