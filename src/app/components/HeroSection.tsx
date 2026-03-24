@@ -303,8 +303,8 @@ export function HeroSection() {
           </div>
 
           {/* CTAs */}
-          <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
-            <a href="#projects" style={{
+          <div className="hero-cta-row" style={{ display: "grid", gap: "12px", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", width: "100%", maxWidth: "680px" }}>
+            <a className="hero-cta-btn" href="#projects" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               padding: "14px 28px", borderRadius: "10px",
               background: "linear-gradient(135deg, #00CFFD, #A855F7)",
@@ -319,7 +319,7 @@ export function HeroSection() {
             >
               Explore Projects <ArrowRight size={15} />
             </a>
-            <a href="#contact" style={{
+            <a className="hero-cta-btn" href="mailto:disyaauliashafa@gmail.com?subject=Portfolio%20Contact&body=Hi%20Shafa%2C%20I%20would%20like%20to%20connect." style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               padding: "14px 28px", borderRadius: "10px",
               background: "var(--card-bg)",
@@ -335,6 +335,7 @@ export function HeroSection() {
               Contact Me
             </a>
             <a
+              className="hero-cta-btn"
               href="/Images%20Portofolio/Portofolio/CV/CV%20Shafa%202026.pdf"
               target="_blank"
               rel="noreferrer"
@@ -410,40 +411,48 @@ export function HeroSection() {
           </div>
 
           {/* Floating Badges */}
-          <div style={{
-            position: "absolute", top: "30px", right: "0px",
-            padding: "10px 14px", borderRadius: "12px",
-            background: "rgba(0,207,253,0.08)",
-            border: "1px solid rgba(0,207,253,0.25)",
-            backdropFilter: "blur(20px)",
-            boxShadow: "0 0 20px rgba(0,207,253,0.15)",
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: "12px", fontWeight: "700", color: "#00CFFD",
-            animation: "floatBadge 4s ease-in-out infinite",
-          }}>Top 10 National</div>
+          <div className="hero-badges-layer" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 4 }}>
+            <div className="hero-floating-badge hero-badge-top" style={{
+              position: "absolute", top: "30px", right: "0px",
+              padding: "10px 14px", borderRadius: "12px",
+              background: "rgba(0,207,253,0.08)",
+              border: "1px solid rgba(0,207,253,0.25)",
+              backdropFilter: "blur(20px)",
+              boxShadow: "0 0 20px rgba(0,207,253,0.15)",
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "12px", fontWeight: "700", color: "#00CFFD",
+              animation: "floatBadge 4s ease-in-out infinite",
+              zIndex: 5,
+              whiteSpace: "nowrap",
+            }}>Top 10 National</div>
 
-          <div style={{
-            position: "absolute", bottom: "50px", left: "0px",
-            padding: "10px 14px", borderRadius: "12px",
-            background: "rgba(168,85,247,0.08)",
-            border: "1px solid rgba(168,85,247,0.25)",
-            backdropFilter: "blur(20px)",
-            boxShadow: "0 0 20px rgba(168,85,247,0.15)",
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: "12px", fontWeight: "700", color: "#A855F7",
-            animation: "floatBadge 4s ease-in-out infinite 1.5s",
-          }}>IBM AI Scholar</div>
+            <div className="hero-floating-badge hero-badge-left" style={{
+              position: "absolute", bottom: "50px", left: "0px",
+              padding: "10px 14px", borderRadius: "12px",
+              background: "rgba(168,85,247,0.08)",
+              border: "1px solid rgba(168,85,247,0.25)",
+              backdropFilter: "blur(20px)",
+              boxShadow: "0 0 20px rgba(168,85,247,0.15)",
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "12px", fontWeight: "700", color: "#A855F7",
+              animation: "floatBadge 4s ease-in-out infinite 1.5s",
+              zIndex: 5,
+              whiteSpace: "nowrap",
+            }}>IBM AI Scholar</div>
 
-          <div style={{
-            position: "absolute", bottom: "100px", right: "-10px",
-            padding: "10px 14px", borderRadius: "12px",
-            background: "rgba(0,255,136,0.06)",
-            border: "1px solid rgba(0,255,136,0.2)",
-            backdropFilter: "blur(20px)",
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: "12px", fontWeight: "700", color: "#00FF88",
-            animation: "floatBadge 4s ease-in-out infinite 3s",
-          }}>GPA 3.88</div>
+            <div className="hero-floating-badge hero-badge-right" style={{
+              position: "absolute", bottom: "100px", right: "-10px",
+              padding: "10px 14px", borderRadius: "12px",
+              background: "rgba(0,255,136,0.06)",
+              border: "1px solid rgba(0,255,136,0.2)",
+              backdropFilter: "blur(20px)",
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "12px", fontWeight: "700", color: "#00FF88",
+              animation: "floatBadge 4s ease-in-out infinite 3s",
+              zIndex: 5,
+              whiteSpace: "nowrap",
+            }}>GPA 3.88</div>
+          </div>
 
           {/* Portrait */}
           <div style={{
@@ -508,7 +517,39 @@ export function HeroSection() {
         @keyframes marqueeSlide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         @media (max-width: 768px) {
           .hero-main-grid { grid-template-columns: 1fr !important; }
-          .hero-portrait-col { margin-top: 40px; }
+          .hero-portrait-col { margin-top: 24px; padding-bottom: 78px; }
+
+          .hero-cta-row {
+            max-width: none !important;
+            width: 100% !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            gap: 8px !important;
+          }
+
+          .hero-cta-btn {
+            justify-content: center !important;
+            padding: 10px 8px !important;
+            font-size: 12px !important;
+            white-space: nowrap !important;
+          }
+
+          .hero-badges-layer {
+            inset: auto 0 0 0 !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 8px !important;
+          }
+
+          .hero-floating-badge {
+            position: static !important;
+            animation: none !important;
+            font-size: 10px !important;
+            font-weight: 700 !important;
+            padding: 7px 10px !important;
+            line-height: 1 !important;
+            backdrop-filter: blur(10px) !important;
+          }
         }
       `}</style>
     </section>

@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
-import { Mail, Linkedin, Download, Github, ArrowUp, Copy, CheckCircle } from "lucide-react";
+import { Mail, Linkedin, Download, Github, ArrowUp, Copy, CheckCircle, Instagram, Music2 } from "lucide-react";
 import { settingsApi } from "@/lib/api";
 import settingsDataImport from "@/data/settings.json";
 
 export function Footer() {
   const [copied, setCopied] = useState(false);
   const [settings, setSettings] = useState<any>(null);
+  const primaryEmail = "disyaauliashafa@gmail.com";
+  const primaryLinkedin = "https://www.linkedin.com/in/shafadisyaaulia";
+  const primaryInstagram = "https://www.instagram.com/shfdsya?igsh=dnlycHl0eDhmbjJw&utm_source=qr";
+  const primaryTiktok = "https://www.tiktok.com/@sapainiya_?_r=1&_t=ZS-94FD03b2uSD";
 
   // Load settings
   useEffect(() => {
@@ -46,8 +50,7 @@ export function Footer() {
   }, []);
 
   const copyEmail = () => {
-    const email = settings?.profile?.email || "shafa.disya@gmail.com";
-    navigator.clipboard.writeText(email);
+    navigator.clipboard.writeText(primaryEmail);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -142,7 +145,7 @@ export function Footer() {
               {copied ? "Email Copied!" : "Contact Me"}
             </button>
 
-            <a href={settings?.profile?.social?.linkedin || "https://linkedin.com/in/shafa-disya-aulia"} target="_blank" rel="noopener noreferrer"
+            <a href={primaryLinkedin} target="_blank" rel="noopener noreferrer"
               style={{
                 display: "flex", alignItems: "center", gap: "10px",
                 padding: "16px 32px", borderRadius: "12px",
@@ -180,30 +183,37 @@ export function Footer() {
 
         {/* Contact details */}
         <div style={{
-          display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px",
+          display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "14px",
           marginBottom: "64px",
         }} className="contact-cards-grid">
           {[
             { 
               icon: <Mail size={18} color="#00CFFD" />, 
               label: "EMAIL", 
-              val: settings?.profile?.email || "shafa.disya@gmail.com", 
+              val: primaryEmail,
               color: "#00CFFD", 
               action: copyEmail 
             },
             { 
               icon: <Linkedin size={18} color="#0A66C2" />, 
               label: "LINKEDIN", 
-              val: settings?.profile?.social?.linkedin?.replace('https://', '').replace('http://', '') || "linkedin.com/in/shafa", 
+              val: primaryLinkedin.replace('https://', '').replace('http://', ''),
               color: "#0A66C2", 
-              href: settings?.profile?.social?.linkedin || "https://linkedin.com/in/shafa-disya-aulia" 
+              href: primaryLinkedin
             },
             { 
-              icon: <Github size={18} color="rgba(255,255,255,0.6)" />, 
-              label: "GITHUB", 
-              val: settings?.profile?.social?.github?.replace('https://', '').replace('http://', '') || "github.com/shafa", 
-              color: "#fff", 
-              href: settings?.profile?.social?.github || "https://github.com" 
+              icon: <Instagram size={18} color="#E1306C" />,
+              label: "INSTAGRAM",
+              val: "@shfdsya",
+              color: "#E1306C",
+              href: primaryInstagram
+            },
+            {
+              icon: <Music2 size={18} color="#FFFFFF" />,
+              label: "TIKTOK",
+              val: "@sapainiya_",
+              color: "#FFFFFF",
+              href: primaryTiktok
             },
           ].map((c, i) => {
             const el = (

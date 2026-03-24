@@ -258,22 +258,23 @@ function StoryDetailModal({ story, onClose }: { story: typeof STORIES[0]; onClos
                 {story.stats.map((stat, i) => (
                   <div key={i} style={{
                     textAlign: "left",
-                    padding: "10px 12px",
+                    padding: "9px 10px",
                     borderRadius: "10px",
                     background: "rgba(255,255,255,0.015)",
                     border: "1px solid rgba(255,255,255,0.04)",
                   }}>
                     <div style={{
-                      fontFamily: "'Syne', sans-serif",
-                      fontSize: "clamp(16px, 2vw, 20px)", fontWeight: "800", color: story.accent,
-                      letterSpacing: "-0.3px", textShadow: `0 0 15px ${story.accent}60`,
-                      lineHeight: "1.15",
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontSize: "clamp(13px, 1.2vw, 16px)", fontWeight: "700", color: story.accent,
+                      letterSpacing: "0px", textShadow: `0 0 12px ${story.accent}45`,
+                      lineHeight: "1.2",
                       whiteSpace: "normal",
-                      wordBreak: "break-word",
+                      wordBreak: "normal",
+                      overflowWrap: "break-word",
                     }}>{stat.val}</div>
                     <div style={{
                       fontFamily: "'Space Grotesk', sans-serif",
-                      fontSize: "11px", color: "rgba(255,255,255,0.45)", fontWeight: "600", marginTop: "6px",
+                      fontSize: "10px", color: "rgba(255,255,255,0.45)", fontWeight: "600", marginTop: "6px",
                       lineHeight: "1.35",
                     }}>{stat.label}</div>
                   </div>
@@ -490,29 +491,30 @@ function StoryCard({ s, onViewDetails }: { s: typeof STORIES[0]; onViewDetails: 
         </div>
 
         <div className="story-card-stats-grid" style={{
-          display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "10px",
+          display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "8px",
           paddingTop: "20px", borderTop: "1px solid rgba(255,255,255,0.05)",
         }}>
           {s.stats.map((stat, i) => (
             <div key={i} style={{
               textAlign: "left",
-              padding: "10px 12px",
+              padding: "8px 10px",
               borderRadius: "10px",
               background: "rgba(255,255,255,0.02)",
               border: "1px solid rgba(255,255,255,0.06)",
-              minHeight: "74px",
+              minHeight: "68px",
             }}>
               <div style={{
-                fontFamily: "'Syne', sans-serif",
-                fontSize: "clamp(14px, 1.6vw, 18px)", fontWeight: "800", color: s.accent,
-                letterSpacing: "-0.3px", textShadow: `0 0 15px ${s.accent}60`,
-                lineHeight: "1.15",
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: "clamp(12px, 1vw, 14px)", fontWeight: "700", color: s.accent,
+                letterSpacing: "0px", textShadow: `0 0 10px ${s.accent}45`,
+                lineHeight: "1.2",
                 whiteSpace: "normal",
-                wordBreak: "break-word",
+                wordBreak: "normal",
+                overflowWrap: "break-word",
               }}>{stat.val}</div>
               <div style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: "10px", color: "rgba(255,255,255,0.45)", fontWeight: "600", marginTop: "6px",
+                fontSize: "9px", color: "rgba(255,255,255,0.45)", fontWeight: "600", marginTop: "5px",
                 lineHeight: "1.35",
               }}>{stat.label}</div>
             </div>
@@ -720,6 +722,7 @@ export function SocialImpact() {
           ].map((m, i) => (
             <div
               key={i}
+              className="impact-metric-card"
               style={{
                 padding: "24px",
                 borderRadius: "16px",
@@ -737,7 +740,7 @@ export function SocialImpact() {
                 (e.currentTarget as HTMLElement).style.boxShadow = "none";
               }}
             >
-              <div style={{
+              <div className="impact-metric-icon" style={{
                 width: "48px", height: "48px", borderRadius: "12px",
                 background: `${m.color}10`,
                 border: `1px solid ${m.color}20`,
@@ -745,12 +748,12 @@ export function SocialImpact() {
                 flexShrink: 0,
               }}>{m.icon}</div>
               <div>
-                <div style={{
+                <div className="impact-metric-value" style={{
                   fontFamily: "'Syne', sans-serif",
                   fontSize: "28px", fontWeight: "800", color: m.color,
                   letterSpacing: "-0.5px", textShadow: `0 0 15px ${m.color}50`,
                 }}>{m.val}</div>
-                <div style={{
+                <div className="impact-metric-label" style={{
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "12px", color: "rgba(255,255,255,0.35)", fontWeight: "600", marginTop: "2px",
                 }}>{m.label}</div>
@@ -768,6 +771,29 @@ export function SocialImpact() {
         @media (max-width: 768px) {
           .impact-cards-grid { grid-template-columns: 1fr !important; }
           .impact-metrics-grid { grid-template-columns: 1fr !important; }
+
+          .impact-metric-card {
+            padding: 18px !important;
+            gap: 12px !important;
+            border-radius: 14px !important;
+          }
+
+          .impact-metric-icon {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 10px !important;
+          }
+
+          .impact-metric-value {
+            font-size: 24px !important;
+            letter-spacing: -0.3px !important;
+            line-height: 1.05 !important;
+          }
+
+          .impact-metric-label {
+            font-size: 11px !important;
+            line-height: 1.35 !important;
+          }
 
           .story-modal-panel {
             border-radius: 16px !important;
@@ -798,6 +824,24 @@ export function SocialImpact() {
         }
 
         @media (max-width: 440px) {
+          .impact-metric-card {
+            padding: 14px !important;
+            gap: 10px !important;
+          }
+
+          .impact-metric-icon {
+            width: 34px !important;
+            height: 34px !important;
+          }
+
+          .impact-metric-value {
+            font-size: 20px !important;
+          }
+
+          .impact-metric-label {
+            font-size: 10px !important;
+          }
+
           .story-card-stats-grid {
             gap: 8px !important;
           }
