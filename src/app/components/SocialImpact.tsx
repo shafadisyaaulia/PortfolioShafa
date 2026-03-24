@@ -1,7 +1,6 @@
 import { Heart, Wifi, Users, Globe, ChevronLeft, ChevronRight, X, Maximize2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import socialImpactData from "@/data/social-impact.json";
-import { socialImpactApi } from "@/lib/api";
 
 // Icon mapping helper
 const getIcon = (iconName: string) => {
@@ -20,6 +19,7 @@ const DEFAULT_STORIES: any[] = socialImpactData.stories.map((story: any) => ({
   icon: getIcon(story.icon)
 }));
 
+
 // Story Detail Modal Component
 function StoryDetailModal({ story, onClose }: { story: typeof STORIES[0]; onClose: () => void }) {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -37,6 +37,7 @@ function StoryDetailModal({ story, onClose }: { story: typeof STORIES[0]; onClos
     >
       <div
         onClick={(e) => e.stopPropagation()}
+        className="story-modal-panel"
         style={{
           maxWidth: "1100px", width: "100%",
           background: "rgba(7,7,26,0.95)",
@@ -72,7 +73,7 @@ function StoryDetailModal({ story, onClose }: { story: typeof STORIES[0]; onClos
         </button>
 
         {/* Header */}
-        <div style={{
+        <div className="story-modal-header" style={{
           padding: "40px 40px 30px",
           borderBottom: `1px solid ${story.accent}15`,
         }}>
@@ -101,18 +102,19 @@ function StoryDetailModal({ story, onClose }: { story: typeof STORIES[0]; onClos
         </div>
 
         {/* Main Image */}
-        <div style={{ padding: "40px" }}>
-          <div style={{
+        <div className="story-modal-body" style={{ padding: "40px" }}>
+          <div className="story-main-image" style={{
             position: "relative", borderRadius: "16px", overflow: "hidden",
             height: "400px",
             border: `1px solid ${story.accent}20`,
             boxShadow: `0 20px 60px ${story.glow}`,
+            background: "#0B1220",
           }}>
             <img
               src={story.gallery[selectedImage]}
               alt={`${story.title} - ${selectedImage + 1}`}
               style={{
-                width: "100%", height: "100%", objectFit: "cover",
+                width: "100%", height: "100%", objectFit: "contain", objectPosition: "center",
               }}
             />
             <div style={{
@@ -174,7 +176,7 @@ function StoryDetailModal({ story, onClose }: { story: typeof STORIES[0]; onClos
           </div>
 
           {/* Story Details */}
-          <div style={{ marginTop: "40px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px" }}>
+          <div className="story-detail-grid" style={{ marginTop: "40px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px" }}>
             <div>
               <h3 style={{
                 fontFamily: "'Syne', sans-serif",
@@ -247,22 +249,32 @@ function StoryDetailModal({ story, onClose }: { story: typeof STORIES[0]; onClos
                 fontSize: "16px", fontWeight: "700", color: story.accent,
                 marginBottom: "12px", letterSpacing: "-0.3px",
               }}>Program Statistics</h4>
-              <div style={{
-                display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px",
+              <div className="story-modal-stats-grid" style={{
+                display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "10px",
                 padding: "20px", borderRadius: "12px",
                 background: "rgba(255,255,255,0.02)",
                 border: "1px solid rgba(255,255,255,0.05)",
               }}>
                 {story.stats.map((stat, i) => (
-                  <div key={i} style={{ textAlign: "center" }}>
+                  <div key={i} style={{
+                    textAlign: "left",
+                    padding: "10px 12px",
+                    borderRadius: "10px",
+                    background: "rgba(255,255,255,0.015)",
+                    border: "1px solid rgba(255,255,255,0.04)",
+                  }}>
                     <div style={{
                       fontFamily: "'Syne', sans-serif",
-                      fontSize: "20px", fontWeight: "800", color: story.accent,
-                      letterSpacing: "-0.5px", textShadow: `0 0 15px ${story.accent}60`,
+                      fontSize: "clamp(16px, 2vw, 20px)", fontWeight: "800", color: story.accent,
+                      letterSpacing: "-0.3px", textShadow: `0 0 15px ${story.accent}60`,
+                      lineHeight: "1.15",
+                      whiteSpace: "normal",
+                      wordBreak: "break-word",
                     }}>{stat.val}</div>
                     <div style={{
                       fontFamily: "'Space Grotesk', sans-serif",
-                      fontSize: "10px", color: "rgba(255,255,255,0.35)", fontWeight: "600", marginTop: "4px",
+                      fontSize: "11px", color: "rgba(255,255,255,0.45)", fontWeight: "600", marginTop: "6px",
+                      lineHeight: "1.35",
                     }}>{stat.label}</div>
                   </div>
                 ))}
@@ -477,20 +489,31 @@ function StoryCard({ s, onViewDetails }: { s: typeof STORIES[0]; onViewDetails: 
           ))}
         </div>
 
-        <div style={{
-          display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px",
+        <div className="story-card-stats-grid" style={{
+          display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "10px",
           paddingTop: "20px", borderTop: "1px solid rgba(255,255,255,0.05)",
         }}>
           {s.stats.map((stat, i) => (
-            <div key={i} style={{ textAlign: "center" }}>
+            <div key={i} style={{
+              textAlign: "left",
+              padding: "10px 12px",
+              borderRadius: "10px",
+              background: "rgba(255,255,255,0.02)",
+              border: "1px solid rgba(255,255,255,0.06)",
+              minHeight: "74px",
+            }}>
               <div style={{
                 fontFamily: "'Syne', sans-serif",
-                fontSize: "22px", fontWeight: "800", color: s.accent,
-                letterSpacing: "-0.5px", textShadow: `0 0 15px ${s.accent}60`,
+                fontSize: "clamp(14px, 1.6vw, 18px)", fontWeight: "800", color: s.accent,
+                letterSpacing: "-0.3px", textShadow: `0 0 15px ${s.accent}60`,
+                lineHeight: "1.15",
+                whiteSpace: "normal",
+                wordBreak: "break-word",
               }}>{stat.val}</div>
               <div style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: "11px", color: "rgba(255,255,255,0.3)", fontWeight: "600", marginTop: "4px",
+                fontSize: "10px", color: "rgba(255,255,255,0.45)", fontWeight: "600", marginTop: "6px",
+                lineHeight: "1.35",
               }}>{stat.label}</div>
             </div>
           ))}
@@ -531,78 +554,19 @@ function StoryCard({ s, onViewDetails }: { s: typeof STORIES[0]; onViewDetails: 
 export function SocialImpact() {
   const [selectedStory, setSelectedStory] = useState<any | null>(null);
   const [stories, setStories] = useState<any[]>(DEFAULT_STORIES);
-  const [loading, setLoading] = useState(true);
 
-  // Load stories from MongoDB API or fallback to localStorage/JSON
+  // Source of truth: local JSON generated from portfolio folders
   useEffect(() => {
-    const loadStories = async () => {
-      try {
-        setLoading(true);
-        
-        // Try MongoDB API first
-        const response = await socialImpactApi.getAll();
-        
-        if (response.success && response.data && Array.isArray(response.data)) {
-          console.log('📦 Loaded social impact from MongoDB:', response.data);
-          // Add icon component to each story
-          const storiesWithIcons = response.data.map((story: any) => ({
-            ...story,
-            icon: getIcon(story.icon)
-          }));
-          setStories(storiesWithIcons);
-          // Sync to localStorage for offline access
-          localStorage.setItem('portfolio_social_impact', JSON.stringify(response.data));
-          return;
-        }
-        
-        // Fallback 1: Try localStorage
-        const stored = localStorage.getItem('portfolio_social_impact');
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          const storiesWithIcons = parsed.map((story: any) => ({
-            ...story,
-            icon: getIcon(story.icon)
-          }));
-          console.log('📦 Loaded social impact from localStorage (fallback):', storiesWithIcons);
-          setStories(storiesWithIcons);
-          return;
-        }
-        
-        // Fallback 2: Use default JSON
-        console.log('📦 Using default social impact from JSON');
-        setStories(DEFAULT_STORIES);
-        localStorage.setItem('portfolio_social_impact', JSON.stringify(socialImpactData.stories));
-        
-      } catch (error) {
-        console.error('Error loading social impact:', error);
-        
-        // Try localStorage fallback on error
-        try {
-          const stored = localStorage.getItem('portfolio_social_impact');
-          if (stored) {
-            const parsed = JSON.parse(stored);
-            const storiesWithIcons = parsed.map((story: any) => ({
-              ...story,
-              icon: getIcon(story.icon)
-            }));
-            setStories(storiesWithIcons);
-          } else {
-            setStories(DEFAULT_STORIES);
-          }
-        } catch {
-          setStories(DEFAULT_STORIES);
-        }
-      } finally {
-        setLoading(false);
-      }
+    const loadStories = () => {
+      setStories(DEFAULT_STORIES);
+      localStorage.setItem('portfolio_social_impact', JSON.stringify(socialImpactData.stories));
     };
 
     loadStories();
 
-    // Listen for custom event from Admin panel (reload from MongoDB)
+    // Listen for custom event from Admin panel
     const handleCustomUpdate = () => {
-      console.log('🔄 Social Impact updated event received! Reloading from MongoDB...');
-      loadStories(); // Always reload from API, not from localStorage
+      loadStories();
     };
 
     window.addEventListener('portfolioSocialImpactUpdated', handleCustomUpdate);
@@ -647,7 +611,7 @@ export function SocialImpact() {
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "11px", fontWeight: "700", color: "#EC4899", letterSpacing: "1.5px",
             }}>
-              SOCIAL IMPACT STORIES
+              COMMUNITY WORK
             </span>
           </div>
           <h2 style={{
@@ -655,21 +619,21 @@ export function SocialImpact() {
             fontSize: "clamp(32px, 5vw, 56px)", fontWeight: "800",
             color: "white", letterSpacing: "-2px", lineHeight: 1.05,
           }}>
-            Technology for
+            Community
             <span style={{
               background: "linear-gradient(135deg, #EC4899 0%, #A855F7 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
               filter: "drop-shadow(0 0 20px rgba(236,72,153,0.4))",
-            }}> Communities</span>
+            }}> Initiatives</span>
           </h2>
           <p style={{
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "15px", color: "rgba(255,255,255,0.4)", marginTop: "16px",
-          }}>Beyond code — creating real change where it matters most.</p>
+          }}>Programs, volunteering, and real-world contributions beyond software delivery.</p>
         </div>
 
         {/* Stories */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }} className="impact-cards-grid">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "24px" }} className="impact-cards-grid">
           {stories.length > 0 ? (
             stories.map(s => (
               <StoryCard
@@ -750,9 +714,9 @@ export function SocialImpact() {
           display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px",
         }} className="impact-metrics-grid">
           {[
-            { icon: <Users size={22} color="#00CFFD" />, val: "500+", label: "People Impacted", color: "#00CFFD" },
-            { icon: <Globe size={22} color="#A855F7" />, val: "2", label: "Regions Served", color: "#A855F7" },
-            { icon: <Heart size={22} color="#EC4899" />, val: "1", label: "National Award", color: "#EC4899" },
+            { icon: <Users size={22} color="#00CFFD" />, val: "3 Program", label: "Detik Pulo Aceh, Mahasiswa Berdampak, Psikososial Langsa", color: "#00CFFD" },
+            { icon: <Globe size={22} color="#A855F7" />, val: "2025", label: "Pelaksanaan Detik Pulo Aceh", color: "#A855F7" },
+            { icon: <Heart size={22} color="#EC4899" />, val: "Community", label: "Fokus pemberdayaan komunitas berbasis teknologi", color: "#EC4899" },
           ].map((m, i) => (
             <div
               key={i}
@@ -797,9 +761,50 @@ export function SocialImpact() {
       </div>
 
       <style>{`
+        @media (max-width: 1080px) {
+          .impact-cards-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+
         @media (max-width: 768px) {
           .impact-cards-grid { grid-template-columns: 1fr !important; }
           .impact-metrics-grid { grid-template-columns: 1fr !important; }
+
+          .story-modal-panel {
+            border-radius: 16px !important;
+            max-height: 94vh !important;
+          }
+
+          .story-modal-header {
+            padding: 20px 20px 18px !important;
+          }
+
+          .story-modal-body {
+            padding: 20px !important;
+          }
+
+          .story-main-image {
+            height: 240px !important;
+          }
+
+          .story-detail-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+            margin-top: 24px !important;
+          }
+
+          .story-modal-stats-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          }
+        }
+
+        @media (max-width: 440px) {
+          .story-card-stats-grid {
+            gap: 8px !important;
+          }
+
+          .story-modal-stats-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
     </section>

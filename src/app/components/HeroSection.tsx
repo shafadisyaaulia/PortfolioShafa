@@ -334,6 +334,25 @@ export function HeroSection() {
             >
               Contact Me
             </a>
+            <a
+              href="/Images%20Portofolio/Portofolio/CV/CV%20Shafa%202026.pdf"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                padding: "14px 28px", borderRadius: "10px",
+                background: "rgba(168,85,247,0.08)",
+                border: "1px solid rgba(168,85,247,0.28)",
+                color: "#A855F7",
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: "14px", fontWeight: "700", textDecoration: "none",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(168,85,247,0.15)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(168,85,247,0.08)"; (e.currentTarget as HTMLElement).style.transform = "none"; }}
+            >
+              View CV
+            </a>
           </div>
         </div>
 
@@ -401,7 +420,7 @@ export function HeroSection() {
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "12px", fontWeight: "700", color: "#00CFFD",
             animation: "floatBadge 4s ease-in-out infinite",
-          }}>🏆 Top 10 National</div>
+          }}>Top 10 National</div>
 
           <div style={{
             position: "absolute", bottom: "50px", left: "0px",
@@ -413,7 +432,7 @@ export function HeroSection() {
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "12px", fontWeight: "700", color: "#A855F7",
             animation: "floatBadge 4s ease-in-out infinite 1.5s",
-          }}>🤖 IBM AI Scholar</div>
+          }}>IBM AI Scholar</div>
 
           <div style={{
             position: "absolute", bottom: "100px", right: "-10px",
@@ -424,7 +443,7 @@ export function HeroSection() {
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "12px", fontWeight: "700", color: "#00FF88",
             animation: "floatBadge 4s ease-in-out infinite 3s",
-          }}>⭐ GPA 3.88</div>
+          }}>GPA 3.88</div>
 
           {/* Portrait */}
           <div style={{

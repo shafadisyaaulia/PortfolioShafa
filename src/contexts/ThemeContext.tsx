@@ -1,6 +1,6 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, ReactNode } from 'react';
 
-type Theme = 'light' | 'dark';
+type Theme = 'light';
 
 interface ThemeContextType {
   theme: Theme;
@@ -10,28 +10,15 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    // Check localStorage first
-    const saved = localStorage.getItem('portfolio_theme');
-    if (saved === 'light' || saved === 'dark') return saved;
-    
-    // Check system preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    
-    // Default: light
-    return 'light';
-  });
+  const theme: Theme = 'light';
 
   useEffect(() => {
-    // Apply theme class to body
-    document.body.setAttribute('data-theme', theme);
-    localStorage.setItem('portfolio_theme', theme);
+    document.body.setAttribute('data-theme', 'light');
+    localStorage.setItem('portfolio_theme', 'light');
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    // Disabled: app is intentionally light-only.
   };
 
   return (

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { ExternalLink, Github, ArrowRight, ChevronLeft, ChevronRight, X, Maximize2 } from "lucide-react";
 import projectsData from "@/data/projects.json";
-import { projectsApi } from "@/lib/api";
 
 // Default projects from JSON (fallback)
 const DEFAULT_PROJECTS: any[] = projectsData.projects;
@@ -15,21 +14,21 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
       onClick={onClose}
       style={{
         position: "fixed", inset: 0, zIndex: 9999,
-        background: "rgba(0,0,0,0.92)",
-        backdropFilter: "blur(10px)",
+        background: "rgba(16, 24, 40, 0.45)",
+        backdropFilter: "blur(8px)",
         display: "flex", alignItems: "center", justifyContent: "center",
-        padding: "20px", overflow: "auto",
+        padding: "clamp(10px, 2.5vw, 24px)", overflow: "auto",
       }}
     >
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          maxWidth: "1100px", width: "100%",
-          background: "rgba(7,7,26,0.95)",
-          border: `1px solid ${project.accent}30`,
-          borderRadius: "24px",
-          boxShadow: `0 40px 100px ${project.glow}, 0 0 0 1px ${project.accent}10`,
-          maxHeight: "90vh", overflow: "auto",
+          maxWidth: "1240px", width: "100%",
+          background: "#FFFFFF",
+          border: `1px solid ${project.accent}25`,
+          borderRadius: "20px",
+          boxShadow: "0 24px 70px rgba(15,23,42,0.18)",
+          maxHeight: "94vh", overflow: "auto",
           position: "relative",
         }}
       >
@@ -39,9 +38,9 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
           style={{
             position: "absolute", top: "20px", right: "20px", zIndex: 10,
             width: "40px", height: "40px", borderRadius: "50%",
-            background: "rgba(0,0,0,0.5)", backdropFilter: "blur(10px)",
+            background: "rgba(255,255,255,0.95)", backdropFilter: "blur(10px)",
             border: `1px solid ${project.accent}40`,
-            color: "white", cursor: "pointer",
+            color: "#111827", cursor: "pointer",
             display: "flex", alignItems: "center", justifyContent: "center",
             transition: "all 0.3s ease",
           }}
@@ -50,7 +49,7 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
             (e.currentTarget as HTMLElement).style.transform = "rotate(90deg)";
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.5)";
+            (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.95)";
             (e.currentTarget as HTMLElement).style.transform = "rotate(0deg)";
           }}
         >
@@ -59,7 +58,7 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
 
         {/* Header */}
         <div style={{
-          padding: "40px 40px 30px",
+          padding: "clamp(18px, 3.2vw, 34px)",
           borderBottom: `1px solid ${project.accent}15`,
         }}>
           <div style={{
@@ -76,9 +75,10 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
           </div>
           <h2 style={{
             fontFamily: "'Syne', sans-serif",
-            fontSize: "42px", fontWeight: "800", color: "white",
+            fontSize: "42px", fontWeight: "800",
             letterSpacing: "-1.5px", margin: "0 0 8px 0",
-            textShadow: `0 0 40px ${project.accent}60`,
+            color: "#111827",
+            textShadow: "none",
           }}>{project.name}</h2>
           <p style={{
             fontFamily: "'Space Grotesk', sans-serif",
@@ -87,24 +87,25 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
         </div>
 
         {/* Main Image */}
-        <div style={{ padding: "40px" }}>
+        <div style={{ padding: "clamp(14px, 2.8vw, 30px)" }}>
           <div style={{
             position: "relative", borderRadius: "16px", overflow: "hidden",
-            height: "400px",
+            height: "clamp(300px, 64vw, 620px)",
             border: `1px solid ${project.accent}20`,
-            boxShadow: `0 20px 60px ${project.glow}`,
+            boxShadow: "0 14px 34px rgba(15,23,42,0.14)",
+            background: "#F8FAFC",
           }}>
             <img
               src={project.gallery[selectedImage]}
               alt={`${project.name} - ${selectedImage + 1}`}
               style={{
-                width: "100%", height: "100%", objectFit: "cover",
+                width: "100%", height: "100%", objectFit: "contain", objectPosition: "center",
               }}
             />
             <div style={{
               position: "absolute", top: "16px", right: "16px",
               padding: "8px 14px", borderRadius: "8px",
-              background: "rgba(0,0,0,0.6)", backdropFilter: "blur(10px)",
+              background: "rgba(15,23,42,0.66)", backdropFilter: "blur(6px)",
               border: `1px solid ${project.accent}40`,
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "12px", fontWeight: "600", color: "white",
@@ -126,8 +127,8 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
                 onClick={() => setSelectedImage(idx)}
                 style={{
                   position: "relative",
-                  height: "80px", borderRadius: "10px", overflow: "hidden",
-                  border: selectedImage === idx ? `2px solid ${project.accent}` : "2px solid rgba(255,255,255,0.1)",
+                  height: "92px", borderRadius: "10px", overflow: "hidden",
+                  border: selectedImage === idx ? `2px solid ${project.accent}` : "2px solid rgba(17,24,39,0.12)",
                   cursor: "pointer",
                   transition: "all 0.3s ease",
                   background: "transparent",
@@ -142,7 +143,7 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
                 }}
                 onMouseLeave={(e) => {
                   if (selectedImage !== idx) {
-                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(17,24,39,0.12)";
                     (e.currentTarget as HTMLElement).style.transform = "scale(1)";
                   }
                 }}
@@ -152,7 +153,7 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
                   alt={`${project.name} thumbnail ${idx + 1}`}
                   style={{
                     width: "100%", height: "100%", objectFit: "cover",
-                    opacity: selectedImage === idx ? 1 : 0.6,
+                    opacity: selectedImage === idx ? 1 : 0.78,
                   }}
                 />
               </button>
@@ -160,16 +161,16 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
           </div>
 
           {/* Description & Details */}
-          <div style={{ marginTop: "40px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px" }}>
+          <div style={{ marginTop: "28px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "24px" }}>
             <div>
               <h3 style={{
                 fontFamily: "'Syne', sans-serif",
-                fontSize: "20px", fontWeight: "700", color: "white",
+                fontSize: "20px", fontWeight: "700", color: "#111827",
                 marginBottom: "16px", letterSpacing: "-0.5px",
               }}>About Project</h3>
               <p style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: "1.7",
+                fontSize: "14px", color: "#374151", lineHeight: "1.7",
                 marginBottom: "24px",
               }}>{project.fullDesc}</p>
 
@@ -184,8 +185,8 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
                   <div key={i} style={{
                     display: "flex", alignItems: "center", gap: "10px",
                     padding: "10px 14px", borderRadius: "8px",
-                    background: `${project.accent}06`,
-                    border: `1px solid ${project.accent}15`,
+                    background: `${project.accent}10`,
+                    border: `1px solid ${project.accent}24`,
                   }}>
                     <div style={{
                       width: "6px", height: "6px", borderRadius: "50%",
@@ -193,7 +194,7 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
                     }} />
                     <span style={{
                       fontFamily: "'Space Grotesk', sans-serif",
-                      fontSize: "13px", fontWeight: "500", color: "rgba(255,255,255,0.6)",
+                      fontSize: "13px", fontWeight: "500", color: "#1F2937",
                     }}>{feature}</span>
                   </div>
                 ))}
@@ -204,7 +205,7 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
               {/* Tech Stack */}
               <h3 style={{
                 fontFamily: "'Syne', sans-serif",
-                fontSize: "20px", fontWeight: "700", color: "white",
+                fontSize: "20px", fontWeight: "700", color: "#111827",
                 marginBottom: "16px", letterSpacing: "-0.5px",
               }}>Tech Stack</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
@@ -219,10 +220,10 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
                       {category.items.map((tech, j) => (
                         <span key={j} style={{
                           padding: "6px 12px", borderRadius: "6px",
-                          background: "rgba(255,255,255,0.04)",
-                          border: "1px solid rgba(255,255,255,0.08)",
+                          background: "#F8FAFC",
+                          border: "1px solid #E5E7EB",
                           fontFamily: "'Space Grotesk', sans-serif",
-                          fontSize: "12px", fontWeight: "600", color: "rgba(255,255,255,0.5)",
+                          fontSize: "12px", fontWeight: "600", color: "#374151",
                         }}>{tech}</span>
                       ))}
                     </div>
@@ -278,13 +279,13 @@ function ProjectDetailModal({ project, onClose }: { project: typeof PROJECTS[0];
                       style={{
                         display: "flex", alignItems: "center", justifyContent: "center",
                         padding: "14px 18px", borderRadius: "10px",
-                        background: "rgba(255,255,255,0.05)",
-                        border: "1px solid rgba(255,255,255,0.1)",
-                        color: "rgba(255,255,255,0.6)",
+                        background: "#F8FAFC",
+                        border: "1px solid #E5E7EB",
+                        color: "#374151",
                         cursor: "pointer", transition: "all 0.3s ease",
                       }}
-                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.1)"; (e.currentTarget as HTMLElement).style.color = "white"; }}
-                      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.6)"; }}
+                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#EEF2FF"; (e.currentTarget as HTMLElement).style.color = "#111827"; }}
+                      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "#F8FAFC"; (e.currentTarget as HTMLElement).style.color = "#374151"; }}
                     >
                       <Github size={16} />
                     </button>
@@ -315,35 +316,36 @@ function ProjectCard({ p, onViewDetails }: { p: typeof PROJECTS[0]; onViewDetail
 
   return (
     <div
+      className="project-card-item"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
         borderRadius: "20px",
-        background: "rgba(255,255,255,0.025)",
-        border: `1px solid ${hovered ? p.accent + "40" : "rgba(255,255,255,0.07)"}`,
+        background: "#FFFFFF",
+        border: `1px solid ${hovered ? p.accent + "55" : "rgba(17,24,39,0.10)"}`,
         overflow: "hidden",
         transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
-        transform: hovered ? "translateY(-8px)" : "none",
-        boxShadow: hovered ? `0 20px 60px ${p.glow}, 0 0 0 1px ${p.accent}20` : "none",
+        transform: hovered ? "translateY(-5px)" : "none",
+        boxShadow: hovered ? "0 18px 38px rgba(15,23,42,0.14)" : "0 6px 20px rgba(15,23,42,0.06)",
         position: "relative",
       }}
     >
       {/* Image Carousel */}
-      <div style={{ height: "220px", overflow: "hidden", position: "relative" }}>
+      <div style={{ height: "clamp(250px, 50vw, 340px)", overflow: "hidden", position: "relative" }}>
         <img src={p.images[currentImageIndex]} alt={`${p.name} - ${currentImageIndex + 1}`} style={{
           width: "100%", height: "100%", objectFit: "cover",
           transition: "transform 0.6s ease",
-          transform: hovered ? "scale(1.08)" : "scale(1)",
-          filter: "brightness(0.7) saturate(0.8)",
+          transform: hovered ? "scale(1.04)" : "scale(1)",
+          filter: "brightness(0.92) saturate(1.05)",
         }} />
         {/* Color overlay */}
         <div style={{
           position: "absolute", inset: 0,
-          background: `linear-gradient(to top, rgba(7,7,26,0.95) 0%, rgba(7,7,26,0.4) 50%, transparent 100%)`,
+          background: `linear-gradient(to top, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.50) 45%, rgba(255,255,255,0.05) 100%)`,
         }} />
         <div style={{
           position: "absolute", inset: 0,
-          background: `${p.accent}08`,
+          background: `${p.accent}14`,
           opacity: hovered ? 1 : 0,
           transition: "opacity 0.4s ease",
         }} />
@@ -356,9 +358,9 @@ function ProjectCard({ p, onViewDetails }: { p: typeof PROJECTS[0]; onViewDetail
               style={{
                 position: "absolute", left: "8px", top: "50%", transform: "translateY(-50%)",
                 width: "32px", height: "32px", borderRadius: "50%",
-                background: "rgba(0,0,0,0.5)", backdropFilter: "blur(10px)",
+                background: "rgba(255,255,255,0.88)", backdropFilter: "blur(10px)",
                 border: `1px solid ${p.accent}40`,
-                color: "white", cursor: "pointer",
+                color: "#111827", cursor: "pointer",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 opacity: hovered ? 1 : 0,
                 transition: "opacity 0.3s ease",
@@ -372,9 +374,9 @@ function ProjectCard({ p, onViewDetails }: { p: typeof PROJECTS[0]; onViewDetail
               style={{
                 position: "absolute", right: "8px", top: "50%", transform: "translateY(-50%)",
                 width: "32px", height: "32px", borderRadius: "50%",
-                background: "rgba(0,0,0,0.5)", backdropFilter: "blur(10px)",
+                background: "rgba(255,255,255,0.88)", backdropFilter: "blur(10px)",
                 border: `1px solid ${p.accent}40`,
-                color: "white", cursor: "pointer",
+                color: "#111827", cursor: "pointer",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 opacity: hovered ? 1 : 0,
                 transition: "opacity 0.3s ease",
@@ -390,8 +392,8 @@ function ProjectCard({ p, onViewDetails }: { p: typeof PROJECTS[0]; onViewDetail
         <div style={{
           position: "absolute", top: "16px", left: "16px",
           fontFamily: "'Syne', sans-serif",
-          fontSize: "11px", fontWeight: "800", color: p.accent,
-          letterSpacing: "2px", opacity: 0.7,
+          fontSize: "11px", fontWeight: "800", color: "#111827",
+          letterSpacing: "2px", opacity: 0.82,
         }}>{p.num}</div>
 
         {/* Status badge */}
@@ -423,7 +425,7 @@ function ProjectCard({ p, onViewDetails }: { p: typeof PROJECTS[0]; onViewDetail
                   width: currentImageIndex === idx ? "24px" : "8px",
                   height: "8px",
                   borderRadius: "4px",
-                  background: currentImageIndex === idx ? p.accent : "rgba(255,255,255,0.3)",
+                  background: currentImageIndex === idx ? p.accent : "rgba(17,24,39,0.28)",
                   border: "none",
                   cursor: "pointer",
                   transition: "all 0.3s ease",
@@ -440,9 +442,9 @@ function ProjectCard({ p, onViewDetails }: { p: typeof PROJECTS[0]; onViewDetail
         }}>
           <h3 style={{
             fontFamily: "'Syne', sans-serif",
-            fontSize: "26px", fontWeight: "800", color: "white",
+            fontSize: "clamp(22px, 5vw, 26px)", fontWeight: "800", color: "#111827",
             letterSpacing: "-0.5px", margin: 0,
-            textShadow: `0 0 30px ${p.accent}60`,
+            textShadow: "none",
           }}>{p.name}</h3>
           <p style={{
             fontFamily: "'Space Grotesk', sans-serif",
@@ -456,7 +458,7 @@ function ProjectCard({ p, onViewDetails }: { p: typeof PROJECTS[0]; onViewDetail
       <div style={{ padding: "24px" }}>
         <p style={{
           fontFamily: "'Space Grotesk', sans-serif",
-          fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: "1.65", marginBottom: "20px",
+          fontSize: "14px", color: "#374151", lineHeight: "1.65", marginBottom: "16px",
         }}>{p.desc}</p>
 
         {/* Metric highlight */}
@@ -478,20 +480,20 @@ function ProjectCard({ p, onViewDetails }: { p: typeof PROJECTS[0]; onViewDetail
           {p.tags.filter(tag => tag && tag.trim()).map(tag => (
             <span key={tag} style={{
               padding: "4px 10px", borderRadius: "6px",
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.08)",
+              background: "#F8FAFC",
+              border: "1px solid #E5E7EB",
               fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: "11px", fontWeight: "600", color: "rgba(255,255,255,0.4)",
+              fontSize: "11px", fontWeight: "600", color: "#4B5563",
             }}>{tag}</span>
           ))}
         </div>
 
         {/* Buttons */}
-        <div style={{ display: "flex", gap: "10px" }}>
+        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
           <button
             onClick={onViewDetails}
             style={{
-              flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+              flex: "1 1 180px", display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
               padding: "11px", borderRadius: "10px",
               background: `${p.accent}12`,
               border: `1px solid ${p.accent}30`,
@@ -505,19 +507,38 @@ function ProjectCard({ p, onViewDetails }: { p: typeof PROJECTS[0]; onViewDetail
           >
             <Maximize2 size={13} /> View Project
           </button>
+          {p.demo && (
+            <button
+              onClick={(e) => { e.stopPropagation(); window.open(p.demo, '_blank'); }}
+              style={{
+                flex: "1 1 140px", display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+                padding: "11px", borderRadius: "10px",
+                background: "#FFFFFF",
+                border: "1px solid #D1D5DB",
+                color: "#1F2937",
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: "13px", fontWeight: "700", cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#F9FAFB"; (e.currentTarget as HTMLElement).style.color = "#111827"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "#FFFFFF"; (e.currentTarget as HTMLElement).style.color = "#1F2937"; }}
+            >
+              <ExternalLink size={14} /> Visit Link
+            </button>
+          )}
           {p.github && (
             <button 
               onClick={(e) => { e.stopPropagation(); window.open(p.github, '_blank'); }}
               style={{
                 display: "flex", alignItems: "center", justifyContent: "center",
                 padding: "11px 16px", borderRadius: "10px",
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                color: "rgba(255,255,255,0.5)",
+                background: "#FFFFFF",
+                border: "1px solid #D1D5DB",
+                color: "#374151",
                 cursor: "pointer", transition: "all 0.2s ease",
               }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)"; (e.currentTarget as HTMLElement).style.color = "white"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.5)"; }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#F9FAFB"; (e.currentTarget as HTMLElement).style.color = "#111827"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "#FFFFFF"; (e.currentTarget as HTMLElement).style.color = "#374151"; }}
             >
               <Github size={14} />
             </button>
@@ -531,64 +552,31 @@ function ProjectCard({ p, onViewDetails }: { p: typeof PROJECTS[0]; onViewDetail
 export function FeaturedProjects() {
   const [selectedProject, setSelectedProject] = useState<any | null>(null);
   const [projects, setProjects] = useState<any[]>(DEFAULT_PROJECTS);
-  const [loading, setLoading] = useState(true);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Load projects from MongoDB API or fallback to localStorage/JSON
+  const previewCount = 4;
+  const displayedProjects = isMobile && !showAllProjects ? projects.slice(0, previewCount) : projects;
+
   useEffect(() => {
-    const loadProjects = async () => {
-      try {
-        setLoading(true);
-        
-        // Try MongoDB API first
-        const response = await projectsApi.getAll();
-        
-        if (response.success && response.data && Array.isArray(response.data)) {
-          console.log('📦 Loaded projects from MongoDB:', response.data);
-          setProjects(response.data);
-          // Sync to localStorage for offline access
-          localStorage.setItem('portfolio_projects', JSON.stringify(response.data));
-          return;
-        }
-        
-        // Fallback 1: Try localStorage
-        const stored = localStorage.getItem('portfolio_projects');
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          console.log('📦 Loaded projects from localStorage (fallback):', parsed);
-          setProjects(parsed);
-          return;
-        }
-        
-        // Fallback 2: Use default JSON
-        console.log('📦 Using default projects from JSON');
-        setProjects(DEFAULT_PROJECTS);
-        localStorage.setItem('portfolio_projects', JSON.stringify(DEFAULT_PROJECTS));
-        
-      } catch (error) {
-        console.error('Error loading projects:', error);
-        
-        // Try localStorage fallback on error
-        try {
-          const stored = localStorage.getItem('portfolio_projects');
-          if (stored) {
-            setProjects(JSON.parse(stored));
-          } else {
-            setProjects(DEFAULT_PROJECTS);
-          }
-        } catch {
-          setProjects(DEFAULT_PROJECTS);
-        }
-      } finally {
-        setLoading(false);
-      }
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // Source of truth: local JSON generated from portfolio folders
+  useEffect(() => {
+    const loadProjects = () => {
+      setProjects(DEFAULT_PROJECTS);
+      localStorage.setItem('portfolio_projects', JSON.stringify(DEFAULT_PROJECTS));
     };
 
     loadProjects();
 
-    // Listen for custom event from Admin panel (reload from MongoDB)
+    // Listen for custom event from Admin panel
     const handleCustomUpdate = () => {
-      console.log('🔄 Projects updated event received! Reloading from MongoDB...');
-      loadProjects(); // Always reload from API, not from localStorage
+      loadProjects();
     };
 
     window.addEventListener('portfolioProjectsUpdated', handleCustomUpdate);
@@ -597,6 +585,11 @@ export function FeaturedProjects() {
       window.removeEventListener('portfolioProjectsUpdated', handleCustomUpdate);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isMobile) setShowAllProjects(true);
+    if (isMobile) setShowAllProjects(false);
+  }, [isMobile]);
 
   return (
     <>
@@ -607,20 +600,20 @@ export function FeaturedProjects() {
         />
       )}
       <section id="projects" style={{
-      background: "var(--bg-primary)",
-      padding: "100px 24px",
+      background: "linear-gradient(180deg, #F3F7FF 0%, #FFFFFF 55%, #F7FAFF 100%)",
+      padding: "72px 18px",
       position: "relative", overflow: "hidden",
     }}>
       {/* Grid pattern */}
       <div style={{
         position: "absolute", inset: 0,
-        backgroundImage: "linear-gradient(rgba(168,85,247,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.03) 1px, transparent 1px)",
+        backgroundImage: "linear-gradient(rgba(99,102,241,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.06) 1px, transparent 1px)",
         backgroundSize: "60px 60px", pointerEvents: "none",
       }} />
       <div style={{
         position: "absolute", top: "-200px", right: "-200px",
         width: "600px", height: "600px", borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 65%)",
+        background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 65%)",
         filter: "blur(30px)", pointerEvents: "none",
       }} />
 
@@ -628,7 +621,7 @@ export function FeaturedProjects() {
         {/* Header */}
         <div style={{
           display: "flex", justifyContent: "space-between", alignItems: "flex-end",
-          marginBottom: "60px", flexWrap: "wrap", gap: "24px",
+          marginBottom: "34px", flexWrap: "wrap", gap: "16px",
         }}>
           <div>
             <div style={{
@@ -639,48 +632,55 @@ export function FeaturedProjects() {
               marginBottom: "20px",
             }}>
               <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "11px", fontWeight: "700", color: "#A855F7", letterSpacing: "1.5px" }}>
-                💻 FEATURED WORK
+                FEATURED WORK
               </span>
             </div>
             <h2 style={{
               fontFamily: "'Syne', sans-serif",
               fontSize: "clamp(32px, 5vw, 56px)", fontWeight: "800",
               color: "var(--text-primary)", letterSpacing: "-2px",
+              margin: 0,
             }}>
               Projects That
               <span style={{
                 background: "linear-gradient(135deg, #A855F7 0%, #EC4899 100%)",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                filter: "drop-shadow(0 0 20px rgba(168,85,247,0.4))",
+                filter: "drop-shadow(0 0 14px rgba(168,85,247,0.22))",
               }}> Make Impact</span>
             </h2>
           </div>
-          <a href="#contact" style={{
+          <button
+            onClick={() => {
+              if (isMobile) setShowAllProjects(prev => !prev);
+            }}
+            style={{
             display: "inline-flex", alignItems: "center", gap: "8px",
             padding: "12px 22px", borderRadius: "10px",
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            color: "rgba(255,255,255,0.6)",
+            background: "#FFFFFF",
+            border: "1px solid rgba(17,24,39,0.14)",
+            color: "#374151",
             fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: "13px", fontWeight: "700", textDecoration: "none",
+            fontSize: "13px", fontWeight: "700",
+            cursor: isMobile ? "pointer" : "default",
+            opacity: isMobile ? 1 : 0.85,
             transition: "all 0.3s ease",
           }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(168,85,247,0.4)"; (e.currentTarget as HTMLElement).style.color = "#A855F7"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)"; (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.6)"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(17,24,39,0.14)"; (e.currentTarget as HTMLElement).style.color = "#374151"; }}
           >
-            All Projects <ArrowRight size={14} />
-          </a>
+            {isMobile ? (showAllProjects ? "Show Less" : `All Projects (${projects.length})`) : `All Projects (${projects.length})`} <ArrowRight size={14} />
+          </button>
         </div>
 
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
           gap: "22px",
-        }}>
-          {projects.length > 0 ? (
-            projects.map(p => (
+        }} className={`projects-layout-grid ${isMobile && showAllProjects ? "projects-layout-grid-expanded" : ""}`}>
+          {displayedProjects.length > 0 ? (
+            displayedProjects.map(p => (
               <ProjectCard
-                key={p.id}
+                key={`${p.id}-${p.name}`}
                 p={p}
                 onViewDetails={() => setSelectedProject(p)}
               />
@@ -690,7 +690,7 @@ export function FeaturedProjects() {
               gridColumn: '1 / -1',
               textAlign: 'center',
               padding: '60px 20px',
-              color: 'rgba(255,255,255,0.4)',
+              color: '#4B5563',
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: '14px',
             }}>
@@ -706,6 +706,49 @@ export function FeaturedProjects() {
           )}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .projects-layout-grid {
+            display: flex !important;
+            gap: 14px !important;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 8px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          .projects-layout-grid::-webkit-scrollbar {
+            height: 6px;
+          }
+
+          .projects-layout-grid::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.35);
+            border-radius: 999px;
+          }
+
+          .project-card-item {
+            flex: 0 0 86vw;
+            max-width: 380px;
+            scroll-snap-align: start;
+          }
+
+          .projects-layout-grid.projects-layout-grid-expanded {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            overflow: visible;
+            scroll-snap-type: none;
+            gap: 14px !important;
+          }
+
+          .projects-layout-grid.projects-layout-grid-expanded .project-card-item {
+            flex: unset;
+            max-width: none;
+            scroll-snap-align: unset;
+          }
+        }
+      `}</style>
     </section>
     </>
   );

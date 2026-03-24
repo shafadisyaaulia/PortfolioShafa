@@ -3,32 +3,32 @@ import { useState } from "react";
 const TECH = [
   {
     group: "Languages & Frameworks",
-    icon: "⚡",
+    icon: "LF",
     items: [
-      { name: "Python", lvl: 92, color: "#3776AB", icon: "🐍" },
-      { name: "React", lvl: 90, color: "#61DAFB", icon: "⚛️" },
-      { name: "Laravel", lvl: 80, color: "#FF2D20", icon: "🔴" },
-      { name: "Node.js", lvl: 85, color: "#339933", icon: "🟢" },
+      { name: "Python", lvl: 92, color: "#3776AB", icon: "PY" },
+      { name: "React", lvl: 90, color: "#0EA5E9", icon: "RE" },
+      { name: "Laravel", lvl: 80, color: "#EF4444", icon: "LV" },
+      { name: "Node.js", lvl: 85, color: "#16A34A", icon: "ND" },
     ],
   },
   {
     group: "AI & Machine Learning",
-    icon: "🤖",
+    icon: "AI",
     items: [
-      { name: "TensorFlow", lvl: 85, color: "#FF6F00", icon: "🔶" },
-      { name: "YOLO / OpenCV", lvl: 80, color: "#5C3EE8", icon: "👁️" },
-      { name: "Gemini AI", lvl: 88, color: "#4285F4", icon: "✨" },
-      { name: "Scikit-learn", lvl: 82, color: "#F7931E", icon: "📊" },
+      { name: "TensorFlow", lvl: 85, color: "#EA580C", icon: "TF" },
+      { name: "YOLO / OpenCV", lvl: 80, color: "#5B21B6", icon: "YO" },
+      { name: "Gemini AI", lvl: 88, color: "#2563EB", icon: "GM" },
+      { name: "Scikit-learn", lvl: 82, color: "#D97706", icon: "SK" },
     ],
   },
   {
     group: "Tools & Design",
-    icon: "🎨",
+    icon: "TD",
     items: [
-      { name: "Figma", lvl: 88, color: "#F24E1E", icon: "🖌️" },
-      { name: "MongoDB", lvl: 78, color: "#47A248", icon: "🍃" },
-      { name: "MySQL", lvl: 75, color: "#4479A1", icon: "💾" },
-      { name: "Git / GitHub", lvl: 90, color: "#E34F26", icon: "🐙" },
+      { name: "Figma", lvl: 88, color: "#DC2626", icon: "FG" },
+      { name: "MongoDB", lvl: 78, color: "#15803D", icon: "MG" },
+      { name: "MySQL", lvl: 75, color: "#1D4ED8", icon: "MY" },
+      { name: "Git / GitHub", lvl: 90, color: "#C2410C", icon: "GH" },
     ],
   },
 ];
@@ -42,18 +42,28 @@ function TechBar({ item, visible }: { item: { name: string; lvl: number; color: 
       style={{
         padding: "16px 20px",
         borderRadius: "14px",
-        background: hovered ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.02)",
-        border: `1px solid ${hovered ? item.color + "40" : "rgba(255,255,255,0.06)"}`,
+        background: hovered ? "#F8FAFC" : "#FFFFFF",
+        border: `1px solid ${hovered ? item.color + "55" : "#E5E7EB"}`,
         transition: "all 0.3s ease",
         transform: hovered ? "translateX(4px)" : "none",
-        boxShadow: hovered ? `0 0 20px ${item.color}20` : "none",
+        boxShadow: hovered ? "0 10px 24px rgba(15,23,42,0.10)" : "0 4px 12px rgba(15,23,42,0.05)",
         cursor: "default",
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <span style={{ fontSize: "18px" }}>{item.icon}</span>
-          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "14px", fontWeight: "600", color: hovered ? "white" : "rgba(255,255,255,0.7)" }}>
+          <span style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: "11px",
+            fontWeight: "700",
+            letterSpacing: "0.5px",
+            color: item.color,
+            padding: "3px 7px",
+            borderRadius: "999px",
+            background: `${item.color}16`,
+            border: `1px solid ${item.color}33`,
+          }}>{item.icon}</span>
+          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "14px", fontWeight: "600", color: "#1F2937" }}>
             {item.name}
           </span>
         </div>
@@ -66,7 +76,7 @@ function TechBar({ item, visible }: { item: { name: string; lvl: number; color: 
       {/* Progress bar */}
       <div style={{
         height: "4px", borderRadius: "100px",
-        background: "rgba(255,255,255,0.06)",
+        background: "#E5E7EB",
         overflow: "hidden",
       }}>
         <div style={{
@@ -86,7 +96,7 @@ export function TechStack() {
 
   return (
     <section id="tech" style={{
-      background: "var(--bg-primary)",
+      background: "linear-gradient(180deg, #F5F8FF 0%, #FFFFFF 50%, #F8FAFF 100%)",
       padding: "100px 24px",
       position: "relative", overflow: "hidden",
     }}>
@@ -122,7 +132,7 @@ export function TechStack() {
             marginBottom: "20px",
           }}>
             <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "11px", fontWeight: "700", color: "#00CFFD", letterSpacing: "1.5px" }}>
-              ⚙️ TECHNICAL EXPERTISE
+              TECHNICAL EXPERTISE
             </span>
           </div>
           <h2 style={{
@@ -147,21 +157,32 @@ export function TechStack() {
             <div key={group.group} style={{
               padding: "28px",
               borderRadius: "20px",
-              background: "rgba(255,255,255,0.025)",
-              border: "1px solid rgba(255,255,255,0.06)",
+              background: "#FFFFFF",
+              border: "1px solid #E5E7EB",
               position: "relative", overflow: "hidden",
+              boxShadow: "0 8px 24px rgba(15,23,42,0.06)",
             }}>
               {/* Group header */}
               <div style={{
                 display: "flex", alignItems: "center", gap: "10px",
                 marginBottom: "24px", paddingBottom: "16px",
-                borderBottom: "1px solid rgba(255,255,255,0.06)",
+                borderBottom: "1px solid #E5E7EB",
               }}>
-                <span style={{ fontSize: "20px" }}>{group.icon}</span>
+                <span style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: "11px",
+                  fontWeight: "700",
+                  letterSpacing: "0.6px",
+                  color: "#0EA5E9",
+                  padding: "4px 8px",
+                  borderRadius: "999px",
+                  background: "rgba(14,165,233,0.10)",
+                  border: "1px solid rgba(14,165,233,0.25)",
+                }}>{group.icon}</span>
                 <span style={{
                   fontFamily: "'Syne', sans-serif",
                   fontSize: "13px", fontWeight: "700",
-                  color: "rgba(255,255,255,0.5)", letterSpacing: "1px",
+                  color: "#475569", letterSpacing: "1px",
                   textTransform: "uppercase",
                 }}>{group.group}</span>
               </div>

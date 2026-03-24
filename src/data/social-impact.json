@@ -1,96 +1,192 @@
 {
   "stories": [
     {
-      "id": "pulo-aceh",
+      "id": "detik-pulo-aceh-2025",
       "num": "01",
-      "tag": "COMMUNITY FACILITATOR",
+      "tag": "COMMUNITY PROGRAM",
       "icon": "Wifi",
-      "title": "Pulo Aceh",
-      "headline": "Bridging the Digital Divide",
-      "desc": "Led digital literacy programs for remote island communities in Pulo Aceh — introducing computing, internet navigation, and digital tools to residents who had never used smartphones or computers.",
-      "fullDesc": "As a Community Facilitator in Pulo Aceh, I led comprehensive digital literacy programs targeting remote island communities that had limited access to technology. The program focused on introducing basic computing skills, internet navigation, and essential digital tools to residents who had never used smartphones or computers before. Through hands-on workshops and patient training, we successfully bridged the digital divide, empowering over 200 residents across 5 villages to access online resources, communicate with loved ones, and explore digital entrepreneurship opportunities.",
+      "title": "Detik Pulo Aceh 2025",
+      "headline": "Community Technology Service in Pulo Aceh",
+      "desc": "Pengabdian masyarakat di Desa Lampuyang, Pulo Aceh, melalui edukasi teknologi dan literasi digital untuk wilayah pesisir dengan akses terbatas.",
+      "fullDesc": "Kegiatan Dedikasi Informatika (HMIF USK) di Pulo Aceh berfokus pada pengabdian masyarakat berbasis teknologi. Program dilaksanakan di Desa Lampuyang untuk memberikan edukasi teknologi dan literasi digital kepada warga, sekaligus membangun komunikasi efektif dengan masyarakat lokal agar kebutuhan infrastruktur informasi di daerah terpencil dapat dipahami dengan lebih tepat.",
       "stats": [
-        { "val": "200+", "label": "Residents" },
-        { "val": "5", "label": "Villages" },
-        { "val": "3mo", "label": "Duration" }
+        {
+          "val": "Pulo Aceh",
+          "label": "Lokasi"
+        },
+        {
+          "val": "Desa Lampuyang",
+          "label": "Area Program"
+        },
+        {
+          "val": "Agustus 2025",
+          "label": "Periode"
+        }
       ],
       "highlights": [
-        "Basic computing & smartphone usage",
-        "Digital entrepreneurship workshops",
-        "Online health resource access"
+        "Edukasi teknologi dan literasi digital untuk masyarakat pesisir",
+        "Pendekatan partisipatif untuk memahami kebutuhan lokal",
+        "Fasilitasi komunikasi komunitas di wilayah akses terbatas"
       ],
       "images": [
-        "/images/social-impact/pulo-aceh/1.jpg",
-        "/images/social-impact/pulo-aceh/2.jpg",
-        "/images/social-impact/pulo-aceh/3.jpg"
+        "/Images%20Portofolio/Portofolio/Detik%20Pulo%20Aceh%202025/Cover.PNG",
+        "/Images%20Portofolio/Portofolio/Detik%20Pulo%20Aceh%202025/IMG_2750.PNG"
       ],
       "gallery": [
-        "/images/social-impact/pulo-aceh/1.jpg",
-        "/images/social-impact/pulo-aceh/2.jpg",
-        "/images/social-impact/pulo-aceh/3.jpg",
-        "/images/social-impact/pulo-aceh/4.jpg",
-        "/images/social-impact/pulo-aceh/5.jpg"
+        "/Images%20Portofolio/Portofolio/Detik%20Pulo%20Aceh%202025/Cover.PNG",
+        "/Images%20Portofolio/Portofolio/Detik%20Pulo%20Aceh%202025/IMG_2750.PNG",
+        "/Images%20Portofolio/Portofolio/Detik%20Pulo%20Aceh%202025/IMG_2752.PNG",
+        "/Images%20Portofolio/Portofolio/Detik%20Pulo%20Aceh%202025/IMG_2753.PNG",
+        "/Images%20Portofolio/Portofolio/Detik%20Pulo%20Aceh%202025/IMG_2754.PNG",
+        "/Images%20Portofolio/Portofolio/Detik%20Pulo%20Aceh%202025/IMG_2755.PNG",
+        "/Images%20Portofolio/Portofolio/Detik%20Pulo%20Aceh%202025/IMG_2756.PNG",
+        "/Images%20Portofolio/Portofolio/Detik%20Pulo%20Aceh%202025/IMG_2757.PNG",
+        "/Images%20Portofolio/Portofolio/Detik%20Pulo%20Aceh%202025/IMG_2758.PNG"
       ],
       "achievements": [
-        "200+ residents trained in digital literacy",
-        "5 villages connected to digital resources",
-        "Ongoing community tech support established",
-        "Local digital entrepreneurs emerged"
+        "Meningkatkan kedekatan dan komunikasi efektif dengan masyarakat lokal",
+        "Mendorong pemahaman kebutuhan infrastruktur informasi daerah terpencil"
       ],
       "impact": [
-        { "label": "Training Sessions", "value": "40+" },
-        { "label": "Success Rate", "value": "85%" },
-        { "label": "Follow-up Support", "value": "Ongoing" }
+        {
+          "label": "Reach",
+          "value": "Komunitas Desa Lampuyang"
+        },
+        {
+          "label": "Outcome",
+          "value": "Literasi digital & pemetaan kebutuhan informasi"
+        },
+        {
+          "label": "Status",
+          "value": "Completed"
+        }
       ],
-      "accent": "#00CFFD",
-      "glow": "rgba(0,207,253,0.3)",
-      "gradient": "linear-gradient(135deg, #00CFFD 0%, #0891B2 100%)"
+      "accent": "#14B8A6",
+      "glow": "rgba(20,184,166,0.3)",
+      "gradient": "linear-gradient(135deg, #14B8A6 0%, #0F766E 100%)"
     },
     {
-      "id": "bireuen",
+      "id": "program-mahasiswa-berdampak",
       "num": "02",
-      "tag": "MAHASISWA BERDAMPAK",
+      "tag": "SOCIAL IMPACT",
       "icon": "Heart",
-      "title": "Bireuen",
-      "headline": "Post-Disaster Recovery",
-      "desc": "Recognized as Mahasiswa Berdampak Bireuen for leading tech-driven post-disaster recovery in Bireuen, Aceh — helping communities rebuild with digital tools and information systems.",
-      "fullDesc": "Following natural disasters in Bireuen, Aceh, I was recognized as Mahasiswa Berdampak (Impact Student) for leading technology-driven post-disaster recovery initiatives. The project involved developing and implementing digital information management systems to coordinate relief efforts, track resource distribution, and facilitate communication between relief organizations and affected communities. This work helped over 300 families and 10+ organizations coordinate more effectively during the critical recovery period, ultimately strengthening community resilience.",
+      "title": "Program Mahasiswa Berdampak",
+      "headline": "20-Day Post-Disaster Community Recovery Program",
+      "desc": "Terpilih pada Program Mahasiswa Berdampak Kemendikbudristek RI untuk berkontribusi selama 20 hari dalam pemulihan wilayah pasca-bencana di Kabupaten Bireuen.",
+      "fullDesc": "Program Mahasiswa Berdampak dijalankan sebagai inisiatif intensif selama 20 hari yang menekankan kontribusi langsung terhadap pemulihan sosial dan infrastruktur pasca-bencana. Kegiatan dilakukan melalui kolaborasi lintas disiplin untuk merancang dan mengimplementasikan solusi berbasis komunitas di Kabupaten Bireuen.",
       "stats": [
-        { "val": "300+", "label": "Families" },
-        { "val": "10+", "label": "Orgs" },
-        { "val": "Award", "label": "2024" }
+        {
+          "val": "20 Hari",
+          "label": "Durasi Program"
+        },
+        {
+          "val": "Kab. Bireuen",
+          "label": "Lokasi Dampak"
+        },
+        {
+          "val": "Februari 2026",
+          "label": "Periode"
+        }
       ],
       "highlights": [
-        "Post-disaster info management",
-        "Relief coordination platform",
-        "Community resilience workshops"
+        "Kolaborasi lintas disiplin dalam tim pemulihan",
+        "Implementasi inisiatif berbasis komunitas",
+        "Fokus pada pemulihan sosial dan infrastruktur"
       ],
       "images": [
-        "/images/social-impact/bireuen/1.jpg",
-        "/images/social-impact/bireuen/2.jpg",
-        "/images/social-impact/bireuen/3.jpg"
+        "/Images%20Portofolio/Portofolio/Program%20Mahasiswa%20Berdampak/0a0b7f95-a56e-4634-ac8e-77f16888ad2c.jpg",
+        "/Images%20Portofolio/Portofolio/Program%20Mahasiswa%20Berdampak/10d11141-7971-40f8-8822-f1da0074bb25.jpg",
+        "/Images%20Portofolio/Portofolio/Program%20Mahasiswa%20Berdampak/3c1e3d45-6e84-4db9-986d-9d9a8f2c6241.jpg"
       ],
       "gallery": [
-        "/images/social-impact/bireuen/1.jpg",
-        "/images/social-impact/bireuen/2.jpg",
-        "/images/social-impact/bireuen/3.jpg",
-        "/images/social-impact/bireuen/4.jpg",
-        "/images/social-impact/bireuen/5.jpg"
+        "/Images%20Portofolio/Portofolio/Program%20Mahasiswa%20Berdampak/0a0b7f95-a56e-4634-ac8e-77f16888ad2c.jpg",
+        "/Images%20Portofolio/Portofolio/Program%20Mahasiswa%20Berdampak/10d11141-7971-40f8-8822-f1da0074bb25.jpg",
+        "/Images%20Portofolio/Portofolio/Program%20Mahasiswa%20Berdampak/3c1e3d45-6e84-4db9-986d-9d9a8f2c6241.jpg",
+        "/Images%20Portofolio/Portofolio/Program%20Mahasiswa%20Berdampak/70babd3b-d869-481d-a29c-92e47fa52c35.jpg",
+        "/Images%20Portofolio/Portofolio/Program%20Mahasiswa%20Berdampak/a79b6560-1da1-4107-ab05-b0fce0efdce3.jpg",
+        "/Images%20Portofolio/Portofolio/Program%20Mahasiswa%20Berdampak/c04f25fa-eea2-477e-aa33-59b382c26296.jpg",
+        "/Images%20Portofolio/Portofolio/Program%20Mahasiswa%20Berdampak/C09F5D84-CA5F-4160-8313-7B4C5D088003.jpg",
+        "/Images%20Portofolio/Portofolio/Program%20Mahasiswa%20Berdampak/IMG_0518.PNG"
       ],
       "achievements": [
-        "Mahasiswa Berdampak Award 2024",
-        "300+ families assisted in recovery",
-        "Cross-organization coordination platform",
-        "Community resilience framework established"
+        "Terpilih sebagai peserta program nasional Kemendikbudristek RI",
+        "Berkontribusi langsung pada program pemulihan pasca-bencana"
       ],
       "impact": [
-        { "label": "Response Time", "value": "-40%" },
-        { "label": "Coordination", "value": "10+ Orgs" },
-        { "label": "Recognition", "value": "National" }
+        {
+          "label": "Reach",
+          "value": "Komunitas terdampak di Bireuen"
+        },
+        {
+          "label": "Outcome",
+          "value": "Dukungan pemulihan sosial & infrastruktur"
+        },
+        {
+          "label": "Status",
+          "value": "Completed"
+        }
       ],
-      "accent": "#A855F7",
-      "glow": "rgba(168,85,247,0.3)",
-      "gradient": "linear-gradient(135deg, #A855F7 0%, #7C3AED 100%)"
+      "accent": "#14B8A6",
+      "glow": "rgba(20,184,166,0.3)",
+      "gradient": "linear-gradient(135deg, #14B8A6 0%, #0F766E 100%)"
+    },
+    {
+      "id": "psikososial-langsa",
+      "num": "03",
+      "tag": "SOCIAL CARE",
+      "icon": "Users",
+      "title": "Psikososial Langsa",
+      "headline": "Trauma Healing Support for Children",
+      "desc": "Relawan trauma healing pada aksi psikososial pasca-bencana (BPMP Aceh) untuk mendampingi anak-anak di PAUD Senang Gembira, Langsa.",
+      "fullDesc": "Dalam kegiatan Aksi Psikososial Pasca-Bencana bersama BPMP Aceh, kontribusi diberikan sebagai relawan trauma healing untuk membantu pemulihan emosional anak-anak di PAUD Senang Gembira, Langsa. Program ini menekankan pendampingan yang empatik, aman, dan berkelanjutan pada fase awal pemulihan pasca-bencana.",
+      "stats": [
+        {
+          "val": "PAUD Senang Gembira",
+          "label": "Lokasi Kegiatan"
+        },
+        {
+          "val": "Langsa",
+          "label": "Kota"
+        },
+        {
+          "val": "Januari 2026",
+          "label": "Periode"
+        }
+      ],
+      "highlights": [
+        "Pendampingan psikososial untuk anak-anak terdampak",
+        "Aktivitas trauma healing dengan pendekatan empatik",
+        "Kolaborasi relawan pada fase pemulihan awal"
+      ],
+      "images": [
+        "/Images%20Portofolio/Portofolio/Psikososial%20Langsa/IMG_2054.PNG",
+        "/Images%20Portofolio/Portofolio/Psikososial%20Langsa/IMG_2057.PNG"
+      ],
+      "gallery": [
+        "/Images%20Portofolio/Portofolio/Psikososial%20Langsa/IMG_2054.PNG",
+        "/Images%20Portofolio/Portofolio/Psikososial%20Langsa/IMG_2057.PNG"
+      ],
+      "achievements": [
+        "Memberikan dukungan pemulihan emosional pasca-bencana",
+        "Berpartisipasi aktif dalam tim psikososial BPMP Aceh"
+      ],
+      "impact": [
+        {
+          "label": "Reach",
+          "value": "Anak-anak PAUD terdampak bencana"
+        },
+        {
+          "label": "Outcome",
+          "value": "Dukungan trauma healing & stabilisasi emosional"
+        },
+        {
+          "label": "Status",
+          "value": "Completed"
+        }
+      ],
+      "accent": "#14B8A6",
+      "glow": "rgba(20,184,166,0.3)",
+      "gradient": "linear-gradient(135deg, #14B8A6 0%, #0F766E 100%)"
     }
   ]
 }

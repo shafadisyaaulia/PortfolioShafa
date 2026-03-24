@@ -3,116 +3,674 @@
     {
       "id": 1,
       "num": "01",
-      "name": "Level-Up",
-      "tagline": "AI-Powered Marketplace",
-      "desc": "Full-stack marketplace platform with an integrated Gemini AI assistant that helps users navigate listings, get personalized recommendations, and automate workflows in real-time.",
-      "fullDesc": "Level-Up is a comprehensive full-stack marketplace platform that revolutionizes online trading with AI integration. The platform features a powerful Gemini AI assistant that provides real-time support, personalized recommendations, and automated workflow management. Built with modern technologies including React for dynamic UI, Node.js for robust backend, and MongoDB for flexible data storage.",
+      "name": "Cherity",
+      "tagline": "AI-Powered Digital Chemistry Lab",
+      "desc": "CHERITY adalah prototype laboratorium kimia digital berbasis AI yang menggabungkan kontrol gestur MediaPipe Hands, perhitungan pH real-time, dan pemantauan keselamatan aktif berbasis YOLOv5.",
+      "fullDesc": "CHERITY (Chemistry Virtual Integrated Laboratory) adalah laboratorium kimia digital inklusif dan aman berbasis web. Solusi ini mengintegrasikan tiga modul inti: (1) interaksi gestur alami dengan MediaPipe Hands untuk mengontrol praktikum virtual, (2) logika kimia komputasional untuk menghitung pH secara real-time saat larutan dicampur, dan (3) Safety Guardian berbasis YOLOv5 untuk mendeteksi perilaku berisiko dan memicu peringatan visual-audio secara otomatis. CHERITY dirancang agar dapat dijalankan di laptop standar, sehingga praktikum lebih inklusif secara geografis, ekonomi, fisik, dan keselamatan.",
       "images": [
-        "/images/projects/level-up/1.jpg",
-        "/images/projects/level-up/2.jpg",
-        "/images/projects/level-up/3.jpg"
+        "/Images%20Portofolio/Portofolio/CHERITY/cover%20essai.png",
+        "/Images%20Portofolio/Portofolio/CHERITY/pengenalan%20cherity%20ke%20siswa%20sman%202%20kuta%20blang.jpeg",
+        "/Images%20Portofolio/Portofolio/CHERITY/pengenalan%20ke%20siswa.jpeg"
       ],
       "gallery": [
-        "/images/projects/level-up/1.jpg",
-        "/images/projects/level-up/2.jpg",
-        "/images/projects/level-up/3.jpg",
-        "/images/projects/level-up/4.jpg",
-        "/images/projects/level-up/5.jpg"
+        "/Images%20Portofolio/Portofolio/CHERITY/cover%20essai.png",
+        "/Images%20Portofolio/Portofolio/CHERITY/pengenalan%20cherity%20ke%20siswa%20sman%202%20kuta%20blang.jpeg",
+        "/Images%20Portofolio/Portofolio/CHERITY/pengenalan%20ke%20siswa.jpeg",
+        "/Images%20Portofolio/Portofolio/CHERITY/pengenalan%20ke%20siswa(1).jpeg",
+        "/Images%20Portofolio/Portofolio/CHERITY/praktikum%20computer%20vision.png",
+        "/Images%20Portofolio/Portofolio/CHERITY/web%20cherity.png"
       ],
-      "tags": ["React", "Node.js", "MongoDB", "Gemini AI"],
-      "accent": "#00CFFD",
-      "glow": "rgba(0,207,253,0.25)",
-      "status": "Live",
-      "metric": "Gemini AI Integrated",
+      "tags": [
+        "AI",
+        "EdTech",
+        "Computer Vision",
+        "Next.js"
+      ],
+      "accent": "#EF4444",
+      "glow": "rgba(239,68,68,0.25)",
+      "status": "Research Prototype",
+      "metric": "AI Chemistry Lab",
       "features": [
-        "AI-powered recommendation engine",
-        "Real-time chat with Gemini AI assistant",
-        "Advanced search and filtering",
-        "Secure payment integration",
-        "User dashboard and analytics"
+        "Kontrol praktikum virtual dengan gestur tangan berbasis MediaPipe Hands",
+        "Perhitungan pH dan visualisasi hasil secara real-time",
+        "YOLOv5 Safety Guardian untuk deteksi risiko dan alarm otomatis"
       ],
       "techStack": [
-        { "name": "Frontend", "items": ["React", "TypeScript", "Tailwind CSS"] },
-        { "name": "Backend", "items": ["Node.js", "Express", "MongoDB"] },
-        { "name": "AI/ML", "items": ["Gemini AI API", "Natural Language Processing"] }
+        {
+          "name": "Frontend",
+          "items": [
+            "Next.js",
+            "JavaScript",
+            "Web Camera API"
+          ]
+        },
+        {
+          "name": "AI/ML",
+          "items": [
+            "MediaPipe Hands",
+            "YOLOv5",
+            "Real-time Inference"
+          ]
+        },
+        {
+          "name": "Domain Engine",
+          "items": [
+            "Computational Chemistry Logic",
+            "pH Calculation Module"
+          ]
+        }
       ],
       "github": "",
-      "demo": ""
+      "demo": "https://solvia-smartlab.vercel.app/"
     },
     {
       "id": 2,
       "num": "02",
-      "name": "SabangKarsa",
-      "tagline": "Tourism Service Platform",
-      "desc": "Comprehensive tourism service platform for Sabang Island connecting travelers with local guides, accommodations, and authentic experiences. Funded by P2MW Kemendikbudristek.",
-      "fullDesc": "SabangKarsa is a comprehensive tourism service platform designed specifically for Sabang Island. The platform connects travelers with local guides, authentic accommodations, and unique experiences. Funded by P2MW Kemendikbudristek, this project aims to boost local tourism economy while preserving cultural authenticity. Features include interactive maps, booking systems, and multilingual support.",
+      "name": "Daurtani",
+      "tagline": "Agri-Waste Commerce Platform",
+      "desc": "Platform digital yang menghubungkan petani dan pembeli limbah pertanian, dikembangkan melalui alur Tech Talk terstruktur dari Front-End, Back-End, Testing & QA hingga Deployment.",
+      "fullDesc": "Daurtani adalah platform e-commerce untuk pengelolaan limbah pertanian agar memiliki nilai ekonomi. Pengembangan dilakukan dengan alur 4 tahap: Pengembangan Front-End, Pengembangan Back-End, Testing & Quality Assurance, dan Deployment ke Vercel. Arsitektur front-end menggunakan Next.js, React.js, dan Tailwind CSS, sedangkan back-end menggunakan Node.js, Express.js, Supabase (PostgreSQL), serta integrasi OpenRouter. Pada tahap evaluasi, halaman utama mencapai skor Lighthouse tinggi (Performance 97, Best Practices 100, SEO 100). Proyek ini juga meraih Juara 2 UTU Awards 2025 kategori Desain Toko Online.",
       "images": [
-        "/images/projects/sabangkarsa/1.jpg",
-        "/images/projects/sabangkarsa/2.jpg",
-        "/images/projects/sabangkarsa/3.jpg"
+        "/Images%20Portofolio/Portofolio/Daurtani/Cover.PNG",
+        "/Images%20Portofolio/Portofolio/Daurtani/IMG_2727.PNG",
+        "/Images%20Portofolio/Portofolio/Daurtani/IMG_2728.PNG"
       ],
       "gallery": [
-        "/images/projects/sabangkarsa/1.jpg",
-        "/images/projects/sabangkarsa/2.jpg",
-        "/images/projects/sabangkarsa/3.jpg",
-        "/images/projects/sabangkarsa/4.jpg",
-        "/images/projects/sabangkarsa/5.jpg"
+        "/Images%20Portofolio/Portofolio/Daurtani/Cover.PNG",
+        "/Images%20Portofolio/Portofolio/Daurtani/IMG_2727.PNG",
+        "/Images%20Portofolio/Portofolio/Daurtani/IMG_2728.PNG",
+        "/Images%20Portofolio/Portofolio/Daurtani/IMG_2729.PNG",
+        "/Images%20Portofolio/Portofolio/Daurtani/IMG_2730.PNG",
+        "/Images%20Portofolio/Portofolio/Daurtani/IMG_2731.PNG",
+        "/Images%20Portofolio/Portofolio/Daurtani/IMG_2732.PNG",
+        "/Images%20Portofolio/Portofolio/Daurtani/IMG_2733.PNG"
       ],
-      "tags": ["Laravel", "MySQL", "Bootstrap", "Maps API"],
-      "accent": "#A855F7",
-      "glow": "rgba(168,85,247,0.25)",
-      "status": "P2MW Funded",
-      "metric": "Kemendikbudristek",
+      "tags": [
+        "Next.js",
+        "Agriculture",
+        "E-Commerce",
+        "Full-Stack"
+      ],
+      "accent": "#10B981",
+      "glow": "rgba(16,185,129,0.25)",
+      "status": "Awarded Project",
+      "metric": "Lighthouse Perf. 97",
       "features": [
-        "Interactive destination maps",
-        "Local guide booking system",
-        "Accommodation listings",
-        "Experience packages",
-        "Multilingual support (ID/EN)"
+        "Roadmap pengembangan: Front-End, Back-End, Testing & QA, Deployment",
+        "Evaluasi kualitas dengan Lighthouse: Performance 97, Best Practices 100, SEO 100",
+        "Deployment production menggunakan Vercel",
+        "Meraih Juara 2 UTU Awards 2025 kategori Desain Toko Online"
       ],
       "techStack": [
-        { "name": "Frontend", "items": ["Bootstrap", "JavaScript", "jQuery"] },
-        { "name": "Backend", "items": ["Laravel", "PHP", "MySQL"] },
-        { "name": "APIs", "items": ["Google Maps API", "Payment Gateway"] }
+        {
+          "name": "Frontend",
+          "items": [
+            "Next.js",
+            "React.js",
+            "Tailwind CSS"
+          ]
+        },
+        {
+          "name": "Backend",
+          "items": [
+            "Node.js",
+            "Express.js",
+            "Supabase",
+            "PostgreSQL"
+          ]
+        },
+        {
+          "name": "Integrations & Deploy",
+          "items": [
+            "OpenRouter",
+            "Vercel",
+            "Lighthouse"
+          ]
+        }
+      ],
+      "github": "",
+      "demo": "https://www.daurtani.id/"
+    },
+    {
+      "id": 3,
+      "num": "03",
+      "name": "Essay Nasional himateta FP USK",
+      "tagline": "Sistem Early Warning Berbasis AI",
+      "desc": "Prototipe produk Essay Nasional Himateta berupa Sistem Early Warning berbasis AI untuk deteksi dini hama dan penyakit tanaman.",
+      "fullDesc": "Project Essay Nasional Himateta ini mengusung prototipe produk bernama Sistem Early Warning berbasis AI. Solusi ini dirancang untuk membantu deteksi dini hama dan penyakit tanaman melalui pendekatan AI, dengan rancangan antarmuka prototipe yang dapat diakses melalui Figma.",
+      "images": [
+        "/Images%20Portofolio/Portofolio/Essay%20Nasional%20himateta%20FP%20USK/cover%20essai.png",
+        "/Images%20Portofolio/Portofolio/Essay%20Nasional%20himateta%20FP%20USK/IMG_2746.PNG"
+      ],
+      "gallery": [
+        "/Images%20Portofolio/Portofolio/Essay%20Nasional%20himateta%20FP%20USK/cover%20essai.png",
+        "/Images%20Portofolio/Portofolio/Essay%20Nasional%20himateta%20FP%20USK/IMG_2746.PNG"
+      ],
+      "tags": [
+        "Portfolio",
+        "Experience",
+        "Documentation"
+      ],
+      "accent": "#3B82F6",
+      "glow": "rgba(59,130,246,0.25)",
+      "status": "Portfolio",
+      "metric": "Figma Interactive Prototype",
+      "features": [
+        "Sistem Early Warning berbasis AI",
+        "Fokus pada deteksi dini hama dan penyakit tanaman",
+        "Prototype interaktif tersedia di Figma"
+      ],
+      "techStack": [
+        {
+          "name": "Design & Prototyping",
+          "items": [
+            "Figma",
+            "UI/UX Wireframing",
+            "Interactive Prototyping"
+          ]
+        }
+      ],
+      "github": "",
+      "demo": "https://www.figma.com/proto/Wnxqq0BWONoksyuAGU7q10/Deteksi-Hama---Penyakit-Tanaman?page-id=0%3A1&node-id=1-4&viewport=64%2C812%2C0.18&t=HpIOubv2VClC0q69-8&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A3&show-proto-sidebar=1&hide-ui=1"
+    },
+    {
+      "id": 4,
+      "num": "04",
+      "name": "Level-Up",
+      "tagline": "Top 10 National Hackathon Finalist",
+      "desc": "Top 10 finalis nasional INFEST 2025 dengan platform penghubung UMKM berbasis React dan Node.js, terintegrasi Gemini AI serta Google Maps API untuk pemetaan real-time.",
+      "fullDesc": "Level-Up dikembangkan sebagai proyek hackathon nasional INFEST 2025 dengan peran Product Lead & UI/UX. Platform ini menghubungkan UMKM dengan pengguna melalui pengalaman digital yang cepat dan intuitif. Solusi dibangun dengan React dan Node.js, lalu diperkuat integrasi Gemini AI untuk asistensi cerdas serta Google Maps API untuk fitur pemetaan lokasi secara real-time.",
+      "images": [
+        "/Images%20Portofolio/Portofolio/Level%20Up/Cover.PNG",
+        "/Images%20Portofolio/Portofolio/Level%20Up/Foto%202.PNG",
+        "/Images%20Portofolio/Portofolio/Level%20Up/IMG_2217.PNG"
+      ],
+      "gallery": [
+        "/Images%20Portofolio/Portofolio/Level%20Up/Cover.PNG",
+        "/Images%20Portofolio/Portofolio/Level%20Up/Foto%202.PNG",
+        "/Images%20Portofolio/Portofolio/Level%20Up/IMG_2217.PNG",
+        "/Images%20Portofolio/Portofolio/Level%20Up/IMG_2219.PNG",
+        "/Images%20Portofolio/Portofolio/Level%20Up/IMG_2220.PNG",
+        "/Images%20Portofolio/Portofolio/Level%20Up/website%20level-up.png"
+      ],
+      "tags": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Gemini AI"
+      ],
+      "accent": "#00CFFD",
+      "glow": "rgba(0,207,253,0.25)",
+      "status": "Top 10 Finalist",
+      "metric": "Top 10 INFEST 2025",
+      "features": [
+        "Platform penghubung UMKM berbasis web",
+        "Integrasi Gemini AI untuk asistensi dan rekomendasi",
+        "Pemetaan lokasi real-time dengan Google Maps API",
+        "Alur produk dirancang dengan pendekatan Product & UI/UX"
+      ],
+      "techStack": [
+        {
+          "name": "Frontend",
+          "items": [
+            "React",
+            "TypeScript",
+            "Tailwind CSS"
+          ]
+        },
+        {
+          "name": "Backend",
+          "items": [
+            "Node.js",
+            "Express",
+            "MongoDB"
+          ]
+        },
+        {
+          "name": "AI/ML",
+          "items": [
+            "Gemini AI API",
+            "Natural Language Processing"
+          ]
+        }
+      ],
+      "github": "",
+      "demo": "https://level-up-hackathon-five.vercel.app/"
+    },
+    {
+      "id": 5,
+      "num": "05",
+      "name": "Master Of Ceremony",
+      "tagline": "National Event MC",
+      "desc": "Master of Ceremony untuk Informatics Festival & Tech Talk x IndigoSpace (Sept 2024), membawakan acara formal skala nasional dan komunitas profesional dengan gaya komunikatif dan percaya diri.",
+      "fullDesc": "Pengalaman Master of Ceremony berfokus pada acara Informatics Festival & Tech Talk x IndigoSpace di Banda Aceh. Peran mencakup mengarahkan alur acara formal skala nasional serta menjaga komunikasi panggung yang jelas, profesional, dan engaging bagi audiens komunitas teknologi.",
+      "images": [
+        "/Images%20Portofolio/Portofolio/Master%20Of%20Ceremony/mc%20formal%20Infest%202024.jpeg",
+        "/Images%20Portofolio/Portofolio/Master%20Of%20Ceremony/mc%20beasiswa%20unggulan.jpeg",
+        "/Images%20Portofolio/Portofolio/Master%20Of%20Ceremony/mc%20monev%20II%20Bem%20Fmipa%20USK.jpeg"
+      ],
+      "gallery": [
+        "/Images%20Portofolio/Portofolio/Master%20Of%20Ceremony/mc%20formal%20Infest%202024.jpeg",
+        "/Images%20Portofolio/Portofolio/Master%20Of%20Ceremony/mc%20beasiswa%20unggulan.jpeg",
+        "/Images%20Portofolio/Portofolio/Master%20Of%20Ceremony/mc%20monev%20II%20Bem%20Fmipa%20USK.jpeg",
+        "/Images%20Portofolio/Portofolio/Master%20Of%20Ceremony/mc%20point.jpeg",
+        "/Images%20Portofolio/Portofolio/Master%20Of%20Ceremony/mc%20share.jpeg",
+        "/Images%20Portofolio/Portofolio/Master%20Of%20Ceremony/mc%20speed%20silaturahmi.jpeg",
+        "/Images%20Portofolio/Portofolio/Master%20Of%20Ceremony/mc%20tech%20talk%20infest.jpeg",
+        "/Images%20Portofolio/Portofolio/Master%20Of%20Ceremony/pembaca%20nominasi%20fmipa%20awards.jpeg"
+      ],
+      "tags": [
+        "Portfolio",
+        "Experience",
+        "Documentation"
+      ],
+      "accent": "#8B5CF6",
+      "glow": "rgba(59,130,246,0.25)",
+      "status": "Professional MC",
+      "metric": "National Event Stage",
+      "features": [
+        "Membawakan acara formal skala nasional",
+        "Menjaga ritme acara dan komunikasi publik",
+        "Pengalaman kolaborasi dengan komunitas profesional"
+      ],
+      "techStack": [
+        {
+          "name": "Stack",
+          "items": [
+            "TBD"
+          ]
+        }
       ],
       "github": "",
       "demo": ""
     },
     {
-      "id": 3,
-      "num": "03",
-      "name": "YOLO Fall Detection",
-      "tagline": "Human Fall Detection AI",
-      "desc": "Real-time human fall detection system using YOLO architecture achieving 92% accuracy on test datasets, designed for elderly care and safety monitoring environments.",
-      "fullDesc": "YOLO Fall Detection is an advanced AI-powered system designed to detect human falls in real-time using the YOLO (You Only Look Once) architecture. Achieving 92% accuracy on test datasets, this system is specifically designed for elderly care facilities and safety monitoring environments. The system can process video feeds in real-time and send instant alerts when a fall is detected, potentially saving lives through rapid response.",
+      "id": 6,
+      "num": "06",
+      "name": "Meurunoe.id",
+      "tagline": "Chief Product Officer Experience",
+      "desc": "Berperan sebagai CPO dalam perancangan konsep platform edukasi digital dan strategi visual branding awal; tim terpilih Top 20 Startup SheHacks by Indosat 2025.",
+      "fullDesc": "Pada Meurunoe.id, peran yang dijalankan adalah Chief Product Officer (CPO) dengan fokus membentuk konsep produk edukasi digital dan strategi visual branding tahap awal bersama tim pengembang. Inisiatif ini berhasil membawa tim masuk Top 20 Startup nasional pada program SheHacks by Indosat 2025 di tahap pengembangan awal.",
       "images": [
-        "/images/projects/yolo-fall-detection/1.jpg",
-        "/images/projects/yolo-fall-detection/2.jpg",
-        "/images/projects/yolo-fall-detection/3.jpg"
+        "/Images%20Portofolio/Portofolio/Meurunoe.id/Cover.PNG",
+        "/Images%20Portofolio/Portofolio/Meurunoe.id/IMG_2760.PNG",
+        "/Images%20Portofolio/Portofolio/Meurunoe.id/IMG_2761.PNG"
       ],
       "gallery": [
-        "/images/projects/yolo-fall-detection/1.jpg",
-        "/images/projects/yolo-fall-detection/2.jpg",
-        "/images/projects/yolo-fall-detection/3.jpg",
-        "/images/projects/yolo-fall-detection/4.jpg",
-        "/images/projects/yolo-fall-detection/5.jpg"
+        "/Images%20Portofolio/Portofolio/Meurunoe.id/Cover.PNG",
+        "/Images%20Portofolio/Portofolio/Meurunoe.id/IMG_2760.PNG",
+        "/Images%20Portofolio/Portofolio/Meurunoe.id/IMG_2761.PNG",
+        "/Images%20Portofolio/Portofolio/Meurunoe.id/IMG_2762.PNG",
+        "/Images%20Portofolio/Portofolio/Meurunoe.id/IMG_2763.PNG",
+        "/Images%20Portofolio/Portofolio/Meurunoe.id/IMG_2764.PNG",
+        "/Images%20Portofolio/Portofolio/Meurunoe.id/IMG_2765.PNG"
       ],
-      "tags": ["Python", "YOLO", "TensorFlow", "OpenCV"],
-      "accent": "#EC4899",
-      "glow": "rgba(236,72,153,0.25)",
-      "status": "92% Accuracy",
-      "metric": "Real-time Detection",
+      "tags": [
+        "Product",
+        "EdTech",
+        "Startup",
+        "Branding"
+      ],
+      "accent": "#F97316",
+      "glow": "rgba(59,130,246,0.25)",
+      "status": "Top 20 Startup",
+      "metric": "Top 20 SheHacks",
       "features": [
-        "Real-time video processing",
-        "92% detection accuracy",
-        "Instant alert system",
-        "Multiple camera support",
-        "Dashboard for monitoring"
+        "Perancangan konsep produk platform edukasi digital",
+        "Penyusunan strategi visual branding awal",
+        "Kolaborasi lintas fungsi bersama tim pengembang"
       ],
       "techStack": [
-        { "name": "AI/ML", "items": ["YOLO v5", "TensorFlow", "PyTorch"] },
-        { "name": "Computer Vision", "items": ["OpenCV", "NumPy", "Pandas"] },
-        { "name": "Backend", "items": ["Python", "Flask", "WebSocket"] }
+        {
+          "name": "Stack",
+          "items": [
+            "TBD"
+          ]
+        }
+      ],
+      "github": "",
+      "demo": ""
+    },
+    {
+      "id": 7,
+      "num": "07",
+      "name": "SabangKarsa",
+      "tagline": "Web-Based Tourism Service",
+      "desc": "Platform layanan wisata terintegrasi untuk booking penginapan, tour guide, dan rental mobil di Sabang; lolos pendanaan internal kewirausahaan USK dan mewakili USK di P2MW Kemendikbudristek 2024.",
+      "fullDesc": "SabangKarsa adalah platform web layanan wisata yang mengintegrasikan kebutuhan perjalanan di Sabang dalam satu layanan: penginapan, tour guide, dan rental mobil. Proyek ini dikembangkan dengan peran Lead Developer/Co-Founder, memperoleh pendanaan internal kewirausahaan USK, terpilih sebagai perwakilan USK dalam P2MW Kemendikbudristek 2024, serta meraih 2nd Place Tenant Produk Berkelanjutan pada USK Award 2025.",
+      "images": [
+        "/Images%20Portofolio/Portofolio/SabangKarsa/Cover.PNG",
+        "/Images%20Portofolio/Portofolio/SabangKarsa/IMG_2058.PNG",
+        "/Images%20Portofolio/Portofolio/SabangKarsa/IMG_2059.PNG"
+      ],
+      "gallery": [
+        "/Images%20Portofolio/Portofolio/SabangKarsa/Cover.PNG",
+        "/Images%20Portofolio/Portofolio/SabangKarsa/IMG_2058.PNG",
+        "/Images%20Portofolio/Portofolio/SabangKarsa/IMG_2059.PNG",
+        "/Images%20Portofolio/Portofolio/SabangKarsa/IMG_2060.PNG",
+        "/Images%20Portofolio/Portofolio/SabangKarsa/IMG_2061.PNG",
+        "/Images%20Portofolio/Portofolio/SabangKarsa/IMG_2062.PNG",
+        "/Images%20Portofolio/Portofolio/SabangKarsa/IMG_2063.PNG",
+        "/Images%20Portofolio/Portofolio/SabangKarsa/IMG_2064.PNG",
+        "/Images%20Portofolio/Portofolio/SabangKarsa/IMG_2065.PNG",
+        "/Images%20Portofolio/Portofolio/SabangKarsa/IMG_2066.PNG"
+      ],
+      "tags": [
+        "Laravel",
+        "MySQL",
+        "Bootstrap",
+        "Maps API"
+      ],
+      "accent": "#A855F7",
+      "glow": "rgba(168,85,247,0.25)",
+      "status": "Funded & Awarded",
+      "metric": "P2MW Representative",
+      "features": [
+        "Booking penginapan, tour guide, dan rental mobil dalam satu platform",
+        "Fokus pada digitalisasi layanan wisata lokal Sabang",
+        "Didukung program pendanaan kewirausahaan kampus",
+        "Mewakili USK pada P2MW Kemendikbudristek 2024"
+      ],
+      "techStack": [
+        {
+          "name": "Frontend",
+          "items": [
+            "Bootstrap",
+            "JavaScript",
+            "jQuery"
+          ]
+        },
+        {
+          "name": "Backend",
+          "items": [
+            "Laravel",
+            "PHP",
+            "MySQL"
+          ]
+        },
+        {
+          "name": "APIs",
+          "items": [
+            "Google Maps API",
+            "Payment Gateway"
+          ]
+        }
+      ],
+      "github": "",
+      "demo": "https://www.sabangkarsa.com/"
+    },
+    {
+      "id": 8,
+      "num": "08",
+      "name": "ShARE USK",
+      "tagline": "Director of Marketing & Communication",
+      "desc": "Menyusun strategi konten Instagram (Feed, Story, Reels) dan mengelola desain konten weekly training bersama pembicara dari dunia consulting dan teknologi, dengan peningkatan engagement 25%.",
+      "fullDesc": "Sebagai Director of Marketing & Communication di ShARE USK, fokus pekerjaan mencakup perencanaan dan eksekusi strategi konten Instagram (Feed, Story, Reels), pengelolaan desain komunikasi visual, serta dukungan konten untuk weekly training yang menghadirkan pembicara dari dunia consulting dan teknologi. Upaya ini berkontribusi pada peningkatan engagement sebesar 25%.",
+      "images": [
+        "/Images%20Portofolio/Portofolio/ShARE%20USK/IMG_2735.PNG",
+        "/Images%20Portofolio/Portofolio/ShARE%20USK/IMG_2745.PNG",
+        "/Images%20Portofolio/Portofolio/ShARE%20USK/IMG_2747.PNG"
+      ],
+      "gallery": [
+        "/Images%20Portofolio/Portofolio/ShARE%20USK/IMG_2735.PNG",
+        "/Images%20Portofolio/Portofolio/ShARE%20USK/IMG_2745.PNG",
+        "/Images%20Portofolio/Portofolio/ShARE%20USK/IMG_2747.PNG",
+        "/Images%20Portofolio/Portofolio/ShARE%20USK/IMG_2748.PNG",
+        "/Images%20Portofolio/Portofolio/ShARE%20USK/IMG_2749.PNG"
+      ],
+      "tags": [
+        "Marketing",
+        "Content Strategy",
+        "Design",
+        "Leadership"
+      ],
+      "accent": "#F59E0B",
+      "glow": "rgba(59,130,246,0.25)",
+      "status": "Leadership Role",
+      "metric": "Engagement +25%",
+      "features": [
+        "Strategi konten Instagram: Feed, Story, dan Reels",
+        "Desain materi untuk rangkaian weekly training",
+        "Kolaborasi dengan pembicara ahli consulting dan teknologi"
+      ],
+      "techStack": [
+        {
+          "name": "Stack",
+          "items": [
+            "TBD"
+          ]
+        }
+      ],
+      "github": "",
+      "demo": ""
+    },
+    {
+      "id": 9,
+      "num": "09",
+      "name": "SIMKEMA",
+      "tagline": "Sistem Informasi Kemahasiswaan",
+      "desc": "SIMKEMA adalah proyek tim mata kuliah Sistem Informasi berbasis web untuk mencatat, memantau, dan mengelola aktivitas kemahasiswaan, baik untuk admin maupun mahasiswa.",
+      "fullDesc": "SIMKEMA adalah proyek tim dari mata kuliah Sistem Informasi berupa sistem berbasis web untuk mencatat, memantau, dan mengelola aktivitas kemahasiswaan. Aplikasi ini memungkinkan admin dan mahasiswa melakukan input serta pelacakan data kegiatan dengan alur yang terstruktur. Pada proyek ini, saya bertanggung jawab atas desain antarmuka halaman user dan admin, serta mengerjakan back-end pada beberapa modul utama seperti daftar panitia, daftar kegiatan, dokumentasi, dan sertifikat.",
+      "images": [
+        "/Images%20Portofolio/Portofolio/simkema/projek%20simkema1.png"
+      ],
+      "gallery": [
+        "/Images%20Portofolio/Portofolio/simkema/projek%20simkema1.png"
+      ],
+      "tags": [
+        "Information System",
+        "Campus",
+        "Web"
+      ],
+      "accent": "#3B82F6",
+      "glow": "rgba(59,130,246,0.25)",
+      "status": "Course Team Project",
+      "metric": "Sistem Informasi Web",
+      "features": [
+        "Pencatatan dan pelacakan aktivitas kemahasiswaan",
+        "Role admin dan mahasiswa untuk input serta monitoring data",
+        "Modul panitia, kegiatan, dokumentasi, dan sertifikat"
+      ],
+      "techStack": [
+        {
+          "name": "Frontend",
+          "items": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+          ]
+        },
+        {
+          "name": "Backend",
+          "items": [
+            "PHP",
+            "MySQL",
+            "XAMPP"
+          ]
+        }
+      ],
+      "github": "https://github.com/shafadisya/Sistem-Informasi-SIM-KEMA.git",
+      "demo": ""
+    },
+    {
+      "id": 10,
+      "num": "10",
+      "name": "SumberKu",
+      "tagline": "Prototipe Berbagi Air Bersih",
+      "desc": "SumberKu adalah prototipe aplikasi untuk memfasilitasi berbagi air sumur antara warga perkotaan dan pinggiran, sehingga akses air bersih bisa lebih kolaboratif.",
+      "fullDesc": "SumberKu merupakan prototipe aplikasi yang dirancang untuk memfasilitasi berbagi air sumur di antara warga perkotaan dan daerah pinggiran. Platform ini memungkinkan pengguna menawarkan atau meminta air sumur, melihat ketersediaan air di lokasi terdekat, serta membangun kolaborasi komunitas dalam manajemen air bersih. Proyek ini menekankan pendekatan desain berbasis kebutuhan sosial dan akses layanan yang mudah dipahami pengguna.",
+      "images": [
+        "/Images%20Portofolio/Portofolio/sumberku/uiux%20sumberku.png",
+        "/Images%20Portofolio/Portofolio/sumberku/figma%20sumberku.png"
+      ],
+      "gallery": [
+        "/Images%20Portofolio/Portofolio/sumberku/uiux%20sumberku.png",
+        "/Images%20Portofolio/Portofolio/sumberku/figma%20sumberku.png"
+      ],
+      "tags": [
+        "Prototype",
+        "Figma",
+        "UI/UX"
+      ],
+      "accent": "#F59E0B",
+      "glow": "rgba(245,158,11,0.25)",
+      "status": "Community Prototype",
+      "metric": "Water-Sharing Prototype",
+      "features": [
+        "Pengguna dapat menawarkan atau meminta air sumur",
+        "Pencarian ketersediaan air di lokasi terdekat",
+        "Mendorong kolaborasi komunitas untuk manajemen air bersih"
+      ],
+      "techStack": [
+        {
+          "name": "Design",
+          "items": [
+            "Figma",
+            "UI/UX"
+          ]
+        }
+      ],
+      "github": "",
+      "demo": "https://lnk.ink/Prototipe-SumberKu"
+    },
+    {
+      "id": 11,
+      "num": "11",
+      "name": "Dashboard Visualisasi Data Serangan Siber",
+      "tagline": "Interactive Cyber Attack Dashboard",
+      "desc": "Dashboard tim mata kuliah Visualisasi Data untuk menampilkan tren serangan siber global 2015-2024 dengan visual interaktif berbasis D3.js.",
+      "fullDesc": "Dashboard Visualisasi Data Serangan Siber merupakan proyek tim dari mata kuliah Visualisasi Data yang bertujuan menampilkan tren serangan siber global dari tahun 2015 hingga 2024. Dashboard ini dibangun menggunakan HTML, CSS, dan JavaScript dengan D3.js untuk visualisasi interaktif. Dalam proyek ini, saya bertanggung jawab penuh pada pembuatan antarmuka dashboard, termasuk layout, navigasi, dan integrasi elemen visualisasi. Saya juga terlibat dalam perancangan konsep visualisasi menggunakan D3.js, meskipun tidak mengembangkan keseluruhan kode visualisasi.",
+      "images": [
+        "/Images%20Portofolio/Portofolio/visualisasi%20data/dashboard%20visualisasi%20data%20serangan%20siber.png",
+        "/Images%20Portofolio/Portofolio/visualisasi%20data/visualisasi%20data%20serangan%20siber.png"
+      ],
+      "gallery": [
+        "/Images%20Portofolio/Portofolio/visualisasi%20data/dashboard%20visualisasi%20data%20serangan%20siber.png",
+        "/Images%20Portofolio/Portofolio/visualisasi%20data/visualisasi%20data%20serangan%20siber.png"
+      ],
+      "tags": [
+        "Data Visualization",
+        "D3.js",
+        "Dashboard",
+        "Team Project"
+      ],
+      "accent": "#14B8A6",
+      "glow": "rgba(59,130,246,0.25)",
+      "status": "Course Team Project",
+      "metric": "Cyber Trend 2015-2024",
+      "features": [
+        "Menampilkan tren serangan siber global 2015-2024",
+        "Dashboard interaktif dengan visual berbasis D3.js",
+        "Desain layout dan navigasi untuk eksplorasi data"
+      ],
+      "techStack": [
+        {
+          "name": "Frontend",
+          "items": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "D3.js"
+          ]
+        }
+      ],
+      "github": "",
+      "demo": ""
+    },
+    {
+      "id": 12,
+      "num": "12",
+      "name": "Wakil Sekretaris Umum HMIF USK 2026",
+      "tagline": "Organizational Leadership",
+      "desc": "Sebagai Wakil Sekretaris Umum HMIF USK, mengelola administrasi, surat menyurat, dokumentasi kegiatan, serta koordinasi lintas departemen untuk program pengembangan mahasiswa.",
+      "fullDesc": "Peran Wakil Sekretaris Umum HMIF USK mencakup pengelolaan administrasi organisasi, penyusunan surat-menyurat, dokumentasi kegiatan, dan koordinasi lintas departemen. Tanggung jawab ini mendukung perencanaan serta pelaksanaan kegiatan akademik dan pengembangan sumber daya mahasiswa secara berkelanjutan.",
+      "images": [
+        "/Images%20Portofolio/Portofolio/Wakil%20Sekretaris%20Umum%20HMIF%20USK%202026/IMG_2744.PNG",
+        "/Images%20Portofolio/Portofolio/Wakil%20Sekretaris%20Umum%20HMIF%20USK%202026/IMG_2766.PNG",
+        "/Images%20Portofolio/Portofolio/Wakil%20Sekretaris%20Umum%20HMIF%20USK%202026/IMG_2767.PNG"
+      ],
+      "gallery": [
+        "/Images%20Portofolio/Portofolio/Wakil%20Sekretaris%20Umum%20HMIF%20USK%202026/IMG_2744.PNG",
+        "/Images%20Portofolio/Portofolio/Wakil%20Sekretaris%20Umum%20HMIF%20USK%202026/IMG_2766.PNG",
+        "/Images%20Portofolio/Portofolio/Wakil%20Sekretaris%20Umum%20HMIF%20USK%202026/IMG_2767.PNG",
+        "/Images%20Portofolio/Portofolio/Wakil%20Sekretaris%20Umum%20HMIF%20USK%202026/IMG_2770.PNG",
+        "/Images%20Portofolio/Portofolio/Wakil%20Sekretaris%20Umum%20HMIF%20USK%202026/IMG_2771.PNG"
+      ],
+      "tags": [
+        "Leadership",
+        "Organization",
+        "Administration",
+        "Coordination"
+      ],
+      "accent": "#8B5CF6",
+      "glow": "rgba(59,130,246,0.25)",
+      "status": "Active Organization Role",
+      "metric": "Cross-Department Coordination",
+      "features": [
+        "Administrasi organisasi dan dokumentasi kegiatan",
+        "Koordinasi lintas departemen untuk program mahasiswa",
+        "Dukungan operasional kegiatan akademik dan pengembangan SDM"
+      ],
+      "techStack": [
+        {
+          "name": "Stack",
+          "items": [
+            "TBD"
+          ]
+        }
+      ],
+      "github": "",
+      "demo": ""
+    },
+    {
+      "id": 13,
+      "num": "13",
+      "name": "Yolo Data Slayer",
+      "tagline": "YOLO Fall Detection Model",
+      "desc": "Pengembangan model deteksi kejadian jatuh pada manusia berbasis analisis video frame dengan YOLO, mencapai akurasi 92% pada data uji (Data Slayer 2.0, Telkom University).",
+      "fullDesc": "Proyek ini dikembangkan untuk kompetisi Data Slayer 2.0 di Telkom University dengan fokus pada deteksi kejadian jatuh manusia dari video. Implementasi menggunakan pendekatan YOLO (You Only Look Once) object detection dan menghasilkan akurasi 92% pada data uji. Pengalaman proyek mencakup pengolahan data video, training model AI, dan evaluasi performa untuk skenario real-time berbasis keamanan manusia.",
+      "images": [
+        "/Images%20Portofolio/Portofolio/Yolo%20Data%20Slayer/cuplikan%20hasil%20training%20yolov5.png",
+        "/Images%20Portofolio/Portofolio/Yolo%20Data%20Slayer/Cuplikan%20layar%202026-03-24%20120816.png",
+        "/Images%20Portofolio/Portofolio/Yolo%20Data%20Slayer/submisson%20di%20kaggle.png"
+      ],
+      "gallery": [
+        "/Images%20Portofolio/Portofolio/Yolo%20Data%20Slayer/cuplikan%20hasil%20training%20yolov5.png",
+        "/Images%20Portofolio/Portofolio/Yolo%20Data%20Slayer/Cuplikan%20layar%202026-03-24%20120816.png",
+        "/Images%20Portofolio/Portofolio/Yolo%20Data%20Slayer/submisson%20di%20kaggle.png"
+      ],
+      "tags": [
+        "YOLO",
+        "Computer Vision",
+        "Python",
+        "AI"
+      ],
+      "accent": "#F97316",
+      "glow": "rgba(59,130,246,0.25)",
+      "status": "Competition Project",
+      "metric": "92% Test Accuracy",
+      "features": [
+        "Deteksi kejadian jatuh manusia berbasis frame video",
+        "Model YOLO untuk object detection real-time",
+        "Akurasi 92% pada data uji kompetisi"
+      ],
+      "techStack": [
+        {
+          "name": "AI/ML",
+          "items": [
+            "YOLO",
+            "Computer Vision",
+            "Model Training"
+          ]
+        },
+        {
+          "name": "Tools",
+          "items": [
+            "Python",
+            "Kaggle",
+            "Video Dataset Processing"
+          ]
+        }
       ],
       "github": "",
       "demo": ""

@@ -33,10 +33,10 @@ function HomePage() {
           --text-primary: #1A1D29;
           --text-secondary: #6B7280;
           --text-muted: #9CA3AF;
-          --accent-cyan: #00CFFD;
-          --accent-purple: #A855F7;
-          --accent-pink: #EC4899;
-          --accent-green: #00FF88;
+          --accent-cyan: #0EA5E9;
+          --accent-purple: #6366F1;
+          --accent-pink: #DB2777;
+          --accent-green: #10B981;
           --border-color: rgba(0,0,0,0.08);
           --card-bg: rgba(0,0,0,0.025);
           --card-bg-hover: rgba(0,0,0,0.05);
@@ -44,27 +44,6 @@ function HomePage() {
           --card-border: rgba(0,0,0,0.08);
           --glow-opacity: 0.15;
           --grid-opacity: 0.03;
-        }
-
-        /* Dark Theme */
-        body[data-theme="dark"] {
-          --bg-primary: #060614;
-          --bg-secondary: #0A0B1A;
-          --bg-tertiary: #12132A;
-          --text-primary: #FFFFFF;
-          --text-secondary: rgba(255,255,255,0.7);
-          --text-muted: rgba(255,255,255,0.5);
-          --accent-cyan: #00CFFD;
-          --accent-purple: #A855F7;
-          --accent-pink: #EC4899;
-          --accent-green: #00FF88;
-          --border-color: rgba(255,255,255,0.1);
-          --card-bg: rgba(255,255,255,0.025);
-          --card-bg-hover: rgba(255,255,255,0.04);
-          --card-bg-subtle: rgba(255,255,255,0.015);
-          --card-border: rgba(255,255,255,0.07);
-          --glow-opacity: 0.25;
-          --grid-opacity: 0.04;
         }
 
         ::-webkit-scrollbar { width: 6px; }
