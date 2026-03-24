@@ -414,7 +414,7 @@ function ProjectCard({ p, onViewDetails }: { p: typeof PROJECTS[0]; onViewDetail
         {/* Image Indicators */}
         {p.images.length > 1 && (
           <div style={{
-            position: "absolute", bottom: "12px", left: "50%", transform: "translateX(-50%)",
+            position: "absolute", bottom: "8px", left: "50%", transform: "translateX(-50%)",
             display: "flex", gap: "6px", zIndex: 2,
           }}>
             {p.images.map((_, idx) => (
@@ -438,7 +438,7 @@ function ProjectCard({ p, onViewDetails }: { p: typeof PROJECTS[0]; onViewDetail
 
         {/* Name on image */}
         <div style={{
-          position: "absolute", bottom: "16px", left: "20px",
+          position: "absolute", bottom: "34px", left: "20px", right: "20px",
         }}>
           <h3 style={{
             fontFamily: "'Syne', sans-serif",
